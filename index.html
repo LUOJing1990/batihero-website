@@ -1,12 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Website</title>
+  <title>BatiHero - Estimation Fenêtre PVC</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Welcome to My GitHub Pages Website!</h1>
-  <p>This is a simple page to test if the site is working.</p>
+  <h1>Obtenez un prix estimatif de vos fenêtres PVC</h1>
+
+  <form id="priceForm">
+    <label>Type de fenêtre :</label>
+    <select id="type">
+      <option value="fixe">Fixe</option>
+      <option value="battant1">1 Vantail</option>
+      <option value="battant2">2 Vantaux</option>
+      <option value="coulissant">Coulissant</option>
+    </select><br>
+
+    <label>Largeur (mm) :</label>
+    <input type="number" id="width"><br>
+
+    <label>Hauteur (mm) :</label>
+    <input type="number" id="height"><br>
+
+    <label>Couleur :</label>
+    <select id="color">
+      <option value="blanc">Blanc</option>
+      <option value="blanc_coloré">Blanc + Couleur</option>
+      <option value="coloré2faces">Couleur 2 faces</option>
+    </select><br>
+
+    <button type="button" onclick="calculatePrice()">Calculer le prix</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script src="script.js"></script>
 </body>
 </html>
