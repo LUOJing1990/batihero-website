@@ -42,55 +42,35 @@
   </div>
 </section>
 
+<!-- ←—— 在此处插入 “Devis Fenêtres CF” 实时报价组件 ——→ -->
+<section id="devis-widget" style="border:1px solid #ddd; padding:15px; max-width:360px; margin:30px auto;">
+  <h2>Devis Fenêtres CF</h2>
+  <label>Largeur (mm):<br>
+    <input id="gh-width" type="number" placeholder="ex. 1250">
+  </label><br><br>
+  <label>Hauteur (mm):<br>
+    <input id="gh-height" type="number" placeholder="ex. 1451">
+  </label><br><br>
+  <button id="gh-devisBtn" class="btn btn-green">Obtenir le prix</button>
+  <div id="gh-result" style="margin-top:10px;color:#007BFF;"></div>
+</section>
+<!-- ←—— “Devis” 组件结束 ——→ -->
+
 <section class="simulateur" id="simulateur">
   <a href="#" class="back-home">← Retour accueil</a>
   <h2>Configurez votre fenêtre — Estimation immédiate</h2>
   <div class="progress-bar">1. Matériau → 2. Style → 3. Dimensions → 4. Vitrage → 5. Résultat</div>
-
+  <!-- ...其余 simulateur 内容... -->
   <form id="configForm">
-    <h3>Étape 1 : Choisissez le matériau</h3>
-    <div class="options">
-      <button type="button" class="option-btn" data-step="material" data-value="PVC">PVC</button>
-      <button type="button" class="option-btn" data-step="material" data-value="Aluminium">Aluminium</button>
-    </div>
-
-    <h3>Étape 2 : Choisissez le style</h3>
-    <div class="options">
-      <button type="button" class="option-btn" data-step="style" data-value="1 vantail">1 vantail</button>
-      <button type="button" class="option-btn" data-step="style" data-value="2 vantaux">2 vantaux</button>
-      <button type="button" class="option-btn" data-step="style" data-value="coulissant">Coulissant</button>
-      <button type="button" class="option-btn" data-step="style" data-value="baie vitrée">Baie vitrée</button>
-    </div>
-
-    <h3>Étape 3 : Entrez les dimensions</h3>
-    <label>Largeur (mm) :</label>
-    <input type="number" id="width" required>
-
-    <label>Hauteur (mm) :</label>
-    <input type="number" id="height" required>
-
-    <button type="button" class="btn btn-blue small-btn">Guide de mesure</button>
-
-    <h3>Étape 4 : Choisissez le vitrage</h3>
-    <div class="options">
-      <button type="button" class="option-btn" data-step="vitrage" data-value="double">Double vitrage</button>
-      <button type="button" class="option-btn" data-step="vitrage" data-value="triple">Triple vitrage</button>
-    </div>
-
+    <!-- ...表单步骤1-4... -->
     <button type="button" class="btn btn-green" onclick="showResult()">Voir le devis</button>
   </form>
-
   <div id="resultat"></div>
 </section>
 
 <section id="contact">
   <h3>Contactez-nous</h3>
-  <form action="https://formspree.io/f/yourformid" method="POST">
-    <input type="text" name="name" placeholder="Votre nom" required>
-    <input type="email" name="email" placeholder="Votre email" required>
-    <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
-    <button type="submit" class="btn btn-blue">Envoyer</button>
-  </form>
+  <!-- ...联系表单... -->
 </section>
 
 <footer>
