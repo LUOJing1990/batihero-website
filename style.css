@@ -1,13 +1,139 @@
 body {
   font-family: Arial, sans-serif;
-  margin: 20px;
+  margin: 0; padding: 0;
+  color: #333;
 }
-label {
-  display: block;
-  margin-top: 10px;
+
+header {
+  background: #2c3e50;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-#result {
-  margin-top: 20px;
+
+nav a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.hero {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.hero-buttons a {
+  margin: 10px;
+}
+
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 20px;
+  background: #f4f4f4;
+}
+
+.features div {
+  font-size: 18px;
+}
+
+.logos {
+  padding: 20px;
+  text-align: center;
+}
+
+.logos-slider img {
+  width: 100px;
+  margin: 0 10px;
+}
+
+.simulateur {
+  padding: 30px 15px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.progress-bar {
+  background: #ddd;
   padding: 10px;
-  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+form h3 {
+  margin-top: 20px;
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.option-btn {
+  padding: 10px 20px;
+  border: 1px solid #4facfe;
+  background: white;
+  cursor: pointer;
+}
+
+.option-btn.active {
+  background: #4facfe;
+  color: white;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.btn {
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-green {
+  background-color: #27ae60;
+}
+
+.btn-blue {
+  background-color: #2980b9;
+}
+
+.small-btn {
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
+#resultat {
+  margin-top: 20px;
+  padding: 15px;
+  background: #ecf0f1;
+  border-radius: 5px;
+}
+
+footer {
+  background: #2c3e50;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 30px;
+}
+
+footer a {
+  color: #ecf0f1;
+  margin: 0 5px;
+  text-decoration: underline;
 }
