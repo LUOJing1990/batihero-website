@@ -53,31 +53,35 @@ function showResult() {
     <a href="#contact" class="btn btn-green">Obtenir un devis détaillé</a>
   `;
 }
-// 将下面 URL 换成你 Replit 实际的 /api/devis 地址
+// 一定使用和 HTML 完全一样的 ID
 const API_URL = 'https://80a67dd4-043a-437b-9b31-fec40991fe12-00-4rtgpz7r016u.worf.replit.dev/api/devis';
 
-document.getElementById('gh-devisBtn').addEventListener('click', async () => {
-  const w = parseInt(document.getElementById('gh-width').value);
-  const h = parseInt(document.getElementById('gh-height').value);
-  const out = document.getElementById('gh-result');
-  if (!w || !h) {
-    return out.textContent = 'Veuillez saisir largeur et hauteur.';
-  }
-  try {
-    const resp = await fetch(API_URL, {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({largeur: w, hauteur: h})
-    });
-    if (!resp.ok) throw new Error(`${resp.status} ${resp.statusText}`);
-    const data = await resp.json();
-    out.innerHTML = `
-      Taille standard : <strong>${data.matched_width}×${data.matched_height}</strong> mm<br>
-      Prix : <strong>${data.base_price} €</strong>
-    `;
-  } catch (err) {
-    console.error('Devis fetch error:', err);
-    out.textContent = 'Erreur lors de la récupération du devis.';
-  }
+// 等待 DOM 全部就绪再绑定
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.getElementById('gh-devisBtn');
+  console.log('绑定 Devis 按钮：', btn);
+  btn.addEventListener('click', async () => {
+    console.log('Devis 按钮被点击');
+    const w = parseInt(document.getElementById('gh-width').value);
+    const h = parseInt(document.getElementById('gh-height').value);
+    const out = document.getElementById('gh-result');
+    if (!w || !h) return out.textContent = 'Veuillez saisir largeur et hauteur.';
+    try {
+      const resp = await fetch(API_URL, {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({largeur: w, hauteur: h})
+      });
+      if (!resp.ok) throw new Error(resp.statusText);
+      const data = await resp.json();
+      out.innerHTML = `
+        Taille standard : <strong>${data.matched_width}×${data.matched_height}</strong> mm<br>
+        Prix : <strong>${data.base_price} €</strong>
+      `;
+    } catch (err) {
+      console.error('Devis fetch error:', err);
+      out.textContent = 'Erreur lors de la récupération du devis.';
+    }
+  });
 });
 
