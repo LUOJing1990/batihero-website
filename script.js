@@ -53,3 +53,30 @@ function showResult() {
     <a href="#contact" class="btn btn-green">Obtenir un devis détaillé</a>
   `;
 }
+const API_URL = 'https://80a67dd4-043a-437b-9b31-fec40991fe12-00-4rtgpz7r016u.worf.replit.dev/api/devis';
+
+document.getElementById('devisBtn').addEventListener('click', async () => {
+  const w = parseInt(document.getElementById('width').value);
+  const h = parseInt(document.getElementById('height').value);
+  const resultEl = document.getElementById('resultat');
+  if (!w || !h) {
+    resultEl.textContent = 'Veuillez saisir largeur et hauteur.';
+    return;
+  }
+  try {
+    const resp = await fetch(API_URL, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({largeur: w, hauteur: h})
+    });
+    if (!resp.ok) throw new Error(`${resp.status} ${resp.statusText}`);
+    const data = await resp.json();
+    resultEl.innerHTML = `
+      Taille standard : <strong>${data.matched_width}×${data.matched_height}</strong> mm<br>
+      Prix : <strong>${data.base_price} €</strong>
+    `;
+  } catch (err) {
+    console.error('❌ 调用失败：', err);
+    resultEl.textContent = 'Erreur lors de la récupération du devis.';
+  }
+});
