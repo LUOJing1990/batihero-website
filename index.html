@@ -2,114 +2,102 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>BatiHero - Devis fenêtres & rénovation</title>
+  <title>BatiHero — Devis fenêtres & installation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body { font-family: Arial, sans-serif; margin:0; padding:0; }
-    header { background:#333; color:white; padding:15px; text-align:center; }
-    nav a { margin:0 15px; color:white; text-decoration:none; }
-    .hero { background:linear-gradient(135deg,#4facfe,#00f2fe); color:white; padding:80px 20px; text-align:center; }
-    .content { padding:20px; max-width:900px; margin:auto; }
-    footer { background:#333; color:white; text-align:center; padding:10px; margin-top:20px; }
-    form input, form select, form textarea { width:100%; padding:10px; margin:5px 0; }
-    form button { padding:10px 20px; background:#4facfe; border:none; color:white; cursor:pointer; }
-    #result { margin-top:15px; padding:10px; background:#f0f0f0; border-radius:5px; }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header>
-  <h1>BatiHero</h1>
+  <div class="logo">BatiHero</div>
   <nav>
-    <a href="#devis">Devis fenêtres</a>
+    <a href="#solutions">Solutions</a>
     <a href="#contact">Contact</a>
+    <a href="#login">Connexion</a>
   </nav>
 </header>
 
-<div class="hero">
-  <h2>Rénovation fenêtres & menuiserie en Île-de-France</h2>
-  <p>Obtenez une estimation gratuite — qualité garantie</p>
-</div>
+<section class="hero">
+  <h1>Obtenez rapidement un devis fenêtres<br>avec installation garantie</h1>
+  <p>Simple, transparent, fiable</p>
+  <div class="hero-buttons">
+    <a href="#simulateur" class="btn btn-green">Je suis propriétaire — Obtenir un devis</a>
+    <a href="#" class="btn btn-blue">Je suis installateur — Commander rapidement</a>
+  </div>
+</section>
 
-<div class="content">
-  <h3 id="devis">Obtenez un prix estimatif de vos fenêtres PVC</h3>
+<section class="features">
+  <div><span>✅</span> Prix transparents</div>
+  <div><span>✅</span> Livraison rapide</div>
+  <div><span>✅</span> Pose certifiée</div>
+</section>
 
-  <form id="priceForm">
-    <label>Type de fenêtre :</label>
-    <select id="type">
-      <option value="fixe">Fixe</option>
-      <option value="battant1">1 Vantail</option>
-      <option value="battant2">2 Vantaux</option>
-      <option value="coulissant">Coulissant</option>
-    </select>
+<section class="logos">
+  <p>Ils nous font confiance :</p>
+  <div class="logos-slider">
+    <img src="partenaire1.png" alt="Partenaire 1">
+    <img src="partenaire2.png" alt="Partenaire 2">
+    <img src="partenaire3.png" alt="Partenaire 3">
+  </div>
+</section>
 
+<section class="simulateur" id="simulateur">
+  <a href="#" class="back-home">← Retour accueil</a>
+  <h2>Configurez votre fenêtre — Estimation immédiate</h2>
+  <div class="progress-bar">1. Matériau → 2. Style → 3. Dimensions → 4. Vitrage → 5. Résultat</div>
+
+  <form id="configForm">
+    <h3>Étape 1 : Choisissez le matériau</h3>
+    <div class="options">
+      <button type="button" class="option-btn" data-step="material" data-value="PVC">PVC</button>
+      <button type="button" class="option-btn" data-step="material" data-value="Aluminium">Aluminium</button>
+    </div>
+
+    <h3>Étape 2 : Choisissez le style</h3>
+    <div class="options">
+      <button type="button" class="option-btn" data-step="style" data-value="1 vantail">1 vantail</button>
+      <button type="button" class="option-btn" data-step="style" data-value="2 vantaux">2 vantaux</button>
+      <button type="button" class="option-btn" data-step="style" data-value="coulissant">Coulissant</button>
+      <button type="button" class="option-btn" data-step="style" data-value="baie vitrée">Baie vitrée</button>
+    </div>
+
+    <h3>Étape 3 : Entrez les dimensions</h3>
     <label>Largeur (mm) :</label>
-    <input type="number" id="width">
+    <input type="number" id="width" required>
 
     <label>Hauteur (mm) :</label>
-    <input type="number" id="height">
+    <input type="number" id="height" required>
 
-    <label>Couleur :</label>
-    <select id="color">
-      <option value="blanc">Blanc</option>
-      <option value="blanc_coloré">Blanc + Couleur</option>
-      <option value="coloré2faces">Couleur 2 faces</option>
-    </select>
+    <button type="button" class="btn btn-blue small-btn">Guide de mesure</button>
 
-    <button type="button" onclick="calculatePrice()">Calculer le prix</button>
+    <h3>Étape 4 : Choisissez le vitrage</h3>
+    <div class="options">
+      <button type="button" class="option-btn" data-step="vitrage" data-value="double">Double vitrage</button>
+      <button type="button" class="option-btn" data-step="vitrage" data-value="triple">Triple vitrage</button>
+    </div>
+
+    <button type="button" class="btn btn-green" onclick="showResult()">Voir le devis</button>
   </form>
 
-  <div id="result"></div>
+  <div id="resultat"></div>
+</section>
 
-  <h3 id="contact">Contactez-nous</h3>
+<section id="contact">
+  <h3>Contactez-nous</h3>
   <form action="https://formspree.io/f/yourformid" method="POST">
     <input type="text" name="name" placeholder="Votre nom" required>
     <input type="email" name="email" placeholder="Votre email" required>
     <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
-    <button type="submit">Envoyer</button>
+    <button type="submit" class="btn btn-blue">Envoyer</button>
   </form>
-</div>
+</section>
 
 <footer>
-  &copy; 2025 BatiHero. Tous droits réservés.
+  <p>© 2025 BatiHero. Tous droits réservés.</p>
+  <p><a href="#">Mentions légales</a> | <a href="#">CGV</a></p>
 </footer>
 
-<!-- Simple Analytics -->
-<script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
-<noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt=""></noscript>
-
-<!-- Script estimation prix -->
-<script>
-function calculatePrice() {
-  const type = document.getElementById('type').value;
-  const width = parseInt(document.getElementById('width').value);
-  const height = parseInt(document.getElementById('height').value);
-  const color = document.getElementById('color').value;
-
-  if (!width || !height) {
-    document.getElementById('result').innerHTML = 'Veuillez entrer largeur et hauteur.';
-    return;
-  }
-
-  let basePrice = 100;
-  if (type === 'battant1') basePrice += 50;
-  if (type === 'battant2') basePrice += 100;
-  if (type === 'coulissant') basePrice += 150;
-
-  if (color === 'blanc_coloré') basePrice *= 1.2;
-  if (color === 'coloré2faces') basePrice *= 1.4;
-
-  const surface = (width / 1000) * (height / 1000); // m²
-  const total = (basePrice * surface).toFixed(2);
-
-  document.getElementById('result').innerHTML = `
-    <strong>Prix estimatif :</strong> ${total} € TTC <br>
-    *Prix indicatif incluant fourniture PVC + vitrage standard <br>
-    Fabricant : Profilé allemand | Délai moyen : 4-6 semaines
-  `;
-}
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
