@@ -53,15 +53,15 @@ function showResult() {
     <a href="#contact" class="btn btn-green">Obtenir un devis détaillé</a>
   `;
 }
+// 将下面 URL 换成你 Replit 实际的 /api/devis 地址
 const API_URL = 'https://80a67dd4-043a-437b-9b31-fec40991fe12-00-4rtgpz7r016u.worf.replit.dev/api/devis';
 
-document.getElementById('devisBtn').addEventListener('click', async () => {
-  const w = parseInt(document.getElementById('width').value);
-  const h = parseInt(document.getElementById('height').value);
-  const resultEl = document.getElementById('resultat');
+document.getElementById('gh-devisBtn').addEventListener('click', async () => {
+  const w = parseInt(document.getElementById('gh-width').value);
+  const h = parseInt(document.getElementById('gh-height').value);
+  const out = document.getElementById('gh-result');
   if (!w || !h) {
-    resultEl.textContent = 'Veuillez saisir largeur et hauteur.';
-    return;
+    return out.textContent = 'Veuillez saisir largeur et hauteur.';
   }
   try {
     const resp = await fetch(API_URL, {
@@ -71,12 +71,13 @@ document.getElementById('devisBtn').addEventListener('click', async () => {
     });
     if (!resp.ok) throw new Error(`${resp.status} ${resp.statusText}`);
     const data = await resp.json();
-    resultEl.innerHTML = `
+    out.innerHTML = `
       Taille standard : <strong>${data.matched_width}×${data.matched_height}</strong> mm<br>
       Prix : <strong>${data.base_price} €</strong>
     `;
   } catch (err) {
-    console.error('❌ 调用失败：', err);
-    resultEl.textContent = 'Erreur lors de la récupération du devis.';
+    console.error('Devis fetch error:', err);
+    out.textContent = 'Erreur lors de la récupération du devis.';
   }
 });
+
