@@ -62,9 +62,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const w = parseInt(document.getElementById('gh-width').value);
     const h = parseInt(document.getElementById('gh-height').value);
     const type = document.getElementById('gh-type').value;
+    const color = document.getElementById('gh-color').value;
     const out = document.getElementById('gh-result');
 
-    if (!w || !h || !type) {
+    if (!w || !h || !type || !color) {
       out.textContent = 'Veuillez remplir tous les champs.';
       return;
     }
@@ -73,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const resp = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ largeur: w, hauteur: h, type: type })
+        body: JSON.stringify({ largeur: w, hauteur: h, type: type, color: color })
       });
 
       if (!resp.ok) throw new Error(resp.statusText);
