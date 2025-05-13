@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const resp = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ largeur: w, hauteur: h, type: type, color: color, vitrage: vitrage })
+        body: JSON.stringify({ largeur: w, hauteur: h, type: type, color: color, vitrage: vitrage, ob: ob })
       });
 
       if (!resp.ok) throw new Error(resp.statusText);
