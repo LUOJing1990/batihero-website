@@ -100,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.getElementById('gh-type').addEventListener('change', updateOBButtonState);
 document.getElementById('gh-width').addEventListener('input', updateOBButtonState);
 document.getElementById('gh-height').addEventListener('input', updateOBButtonState);
+updateOBButtonState();
 });
 
 function updateOBButtonState() {
