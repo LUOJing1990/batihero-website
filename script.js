@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const out = document.getElementById('gh-result');
     const ob = config.ob === 'oui';  
     
-    if (!w || !h || !type || !color || !vitrage || !ob) {
+    if (!w || !h || !type || !color || !vitrage) {
       out.textContent = 'Veuillez remplir tous les champs.';
       return;
     }
