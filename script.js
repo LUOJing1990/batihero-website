@@ -102,29 +102,36 @@ document.getElementById('gh-height').addEventListener('input', updateOBButtonSta
 });
 
 function updateOBButtonState() {
-  const type = document.getElementById('gh-type').value.toLowerCase();
+  const type = document.getElementById('gh-type').value;
   const w = parseInt(document.getElementById('gh-width').value);
   const h = parseInt(document.getElementById('gh-height').value);
 
   const btnOui = document.getElementById('btn-ob-oui');
 
-  // 若尚未填写尺寸或类型，则不处理
+  // 🚫 明确禁止添加 OB 的窗型（来自你红框的 value）
+  const forbiddenTypes = [
+    'FIXED_WINDOW_PRICING',
+    'COULISSANT_PVC',
+    'PORTE_1_VANTAIL_PVC',
+    'PORTE_FENETRE_ALL'
+  ];
+
+  if (forbiddenTypes.includes(type)) {
+    btnOui.disabled = true;
+    btnOui.classList.add('disabled');
+    return;
+  }
+
+  // ⛔ 尺寸不合格：宽 > 800（或双扇每扇宽 > 800），高 > 2000
   if (!type || isNaN(w) || isNaN(h)) {
     btnOui.disabled = false;
     btnOui.classList.remove('disabled');
     return;
   }
 
-  // 识别不可加 OB 的窗型
-  if (type.includes('fixe') || type.includes('porte') || type.includes('coulissant')) {
-    btnOui.disabled = true;
-    btnOui.classList.add('disabled');
-    return;
-  }
-
-  // 判断尺寸（双扇宽度除以2）
+  // 判断是否是双扇
   let widthPerLeaf = w;
-  if (type.includes('2') || type.includes('double')) {
+  if (type.includes('2') || type.includes('DOUBLE')) {
     widthPerLeaf = w / 2;
   }
 
@@ -136,5 +143,6 @@ function updateOBButtonState() {
     btnOui.classList.remove('disabled');
   }
 }
+
 
 
