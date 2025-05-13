@@ -115,7 +115,6 @@ function updateOBButtonState() {
   'FIXED_WINDOW_PRICING',
   'COULISSANT_PVC',
   'PORTE_1_VANTAIL_PVC',
-  'PORTE_FENETRE_ALL',
   'OB_1_VANTAIL_PVC',
   'SOUFFLET_PVC'
 ];
