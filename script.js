@@ -56,32 +56,44 @@ function showResult() {
 // 一定使用和 HTML 完全一样的 ID
 const API_URL = 'https://80a67dd4-043a-437b-9b31-fec40991fe12-00-4rtgpz7r016u.worf.replit.dev/api/devis';
 
-// 等待 DOM 全部就绪再绑定
 document.addEventListener('DOMContentLoaded', () => {
   const btn = document.getElementById('gh-devisBtn');
-  console.log('绑定 Devis 按钮：', btn);
   btn.addEventListener('click', async () => {
-    console.log('Devis 按钮被点击');
     const w = parseInt(document.getElementById('gh-width').value);
     const h = parseInt(document.getElementById('gh-height').value);
+    const type = document.getElementById('gh-type').value;
     const out = document.getElementById('gh-result');
-    if (!w || !h) return out.textContent = 'Veuillez saisir largeur et hauteur.';
+
+    if (!w || !h || !type) {
+      out.textContent = 'Veuillez remplir tous les champs.';
+      return;
+    }
+
     try {
       const resp = await fetch(API_URL, {
         method: 'POST',
-        headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({largeur: w, hauteur: h})
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ largeur: w, hauteur: h, type: type })
       });
+
       if (!resp.ok) throw new Error(resp.statusText);
       const data = await resp.json();
-      out.innerHTML = `
-        Taille standard : <strong>${data.matched_width}×${data.matched_height}</strong> mm<br>
-        Prix : <strong>${data.base_price} €</strong>
-      `;
+
+      if (data.base_price) {
+        out.innerHTML = `
+          <div style="color:#007BFF">
+            ${type}<br>
+            Taille : <strong>${data.matched_width}×${data.matched_height}</strong> mm<br>
+            Prix : <strong>${data.base_price} € TTC</strong>
+          </div>`;
+      } else {
+        out.textContent = "Aucune correspondance pour cette taille.";
+      }
     } catch (err) {
       console.error('Devis fetch error:', err);
       out.textContent = 'Erreur lors de la récupération du devis.';
     }
   });
 });
+
 
