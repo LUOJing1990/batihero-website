@@ -1,6 +1,7 @@
 body {
   font-family: Arial, sans-serif;
-  margin: 0; padding: 0;
+  margin: 0;
+  padding: 0;
   color: #333;
 }
 
@@ -52,47 +53,42 @@ nav a {
   margin: 0 10px;
 }
 
-.simulateur {
-  padding: 30px 15px;
-  max-width: 900px;
-  margin: auto;
+#devis-widget {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 
-.progress-bar {
-  background: #ddd;
+label {
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+input, select {
+  width: 100%;
   padding: 10px;
-  margin-bottom: 20px;
-  font-size: 14px;
-}
-
-form h3 {
-  margin-top: 20px;
-}
-
-.options {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
   margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .option-btn {
-  padding: 10px 20px;
+  padding: 8px 16px;
   border: 1px solid #4facfe;
   background: white;
   cursor: pointer;
+  border-radius: 4px;
+  margin-right: 10px;
 }
 
 .option-btn.active {
   background: #4facfe;
   color: white;
-}
-
-input, textarea {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  margin-bottom: 15px;
 }
 
 .btn {
@@ -102,6 +98,7 @@ input, textarea {
   color: white;
   text-decoration: none;
   display: inline-block;
+  border-radius: 4px;
 }
 
 .btn-green {
@@ -112,16 +109,10 @@ input, textarea {
   background-color: #2980b9;
 }
 
-.small-btn {
-  padding: 5px 10px;
-  font-size: 14px;
-}
-
-#resultat {
-  margin-top: 20px;
-  padding: 15px;
-  background: #ecf0f1;
-  border-radius: 5px;
+#gh-result {
+  margin-top: 15px;
+  font-size: 16px;
+  color: #007BFF;
 }
 
 footer {
@@ -138,8 +129,18 @@ footer a {
   text-decoration: underline;
 }
 
-button.disabled {
-  background-color: #ccc !important;
-  cursor: not-allowed !important;
-  color: #666 !important;
+.form-reminder {
+  background: #f0f8ff;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-left: 4px solid #007BFF;
+  font-size: 14px;
+  color: #333;
+  border-radius: 6px;
+}
+
+.form-subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 15px;
 }
