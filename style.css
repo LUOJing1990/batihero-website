@@ -48,7 +48,7 @@ nav a:hover {
 .hero {
   background: white;
   text-align: center;
-  padding: 60px 20px 50px; /* 减少顶部留白 */
+  padding: 40px 20px 40px; /* 顶部留白减小 */
 }
 
 .hero h1 {
@@ -62,12 +62,12 @@ nav a:hover {
 .hero p {
   font-size: 15px;
   color: #666;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .hero-buttons {
   max-width: 720px;
-  margin: 0 auto 30px;
+  margin: 0 auto 20px; /* 间距缩小 */
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -125,7 +125,7 @@ nav a:hover {
 /* ========== 实时报价区 ========== */
 #devis-widget {
   max-width: 480px;
-  margin: 40px auto 60px;
+  margin: 20px auto 60px; /* 模块上移 */
   padding: 40px 30px;
   border-radius: 12px;
   background: #fff;
@@ -290,4 +290,5 @@ footer a {
     padding: 25px 20px;
   }
 }
+
 
