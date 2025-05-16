@@ -48,7 +48,7 @@ nav a:hover {
 .hero {
   background: white;
   text-align: center;
-  padding: 100px 20px 80px;
+  padding: 60px 20px 50px; /* 减少顶部留白 */
 }
 
 .hero h1 {
@@ -66,6 +66,8 @@ nav a:hover {
 }
 
 .hero-buttons {
+  max-width: 720px;
+  margin: 0 auto 30px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -111,25 +113,19 @@ nav a:hover {
 /* ========== 三项优势区 ========== */
 .features {
   background: white;
-  border-top: 1px solid #e2e8f0;
-  border-bottom: 1px solid #e2e8f0;
-  padding: 30px 20px;
+  padding: 20px 20px 15px;
   display: flex;
   justify-content: center;
   gap: 30px;
   font-size: 16px;
-}
-
-.features div {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 /* ========== 实时报价区 ========== */
 #devis-widget {
   max-width: 480px;
-  margin: 60px auto;
+  margin: 40px auto 60px;
   padding: 40px 30px;
   border-radius: 12px;
   background: #fff;
