@@ -27,10 +27,19 @@ header {
 }
 
 .logo {
-  font-size: 26px;
+  display: flex;
+  align-items: center;
+  font-size: 24px;
   font-weight: bold;
-  letter-spacing: 0.5px;
   color: #007bff;
+  text-decoration: none;
+  gap: 10px;
+}
+
+.logo-img {
+  height: 32px;
+  width: auto;
+  display: inline-block;
 }
 
 nav a {
