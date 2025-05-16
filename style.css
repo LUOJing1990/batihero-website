@@ -35,7 +35,7 @@ header {
 
 nav a {
   color: #333;
-  margin: 0 15px;
+  margin: 0 20px;
   font-size: 15px;
   transition: color 0.3s ease;
 }
@@ -45,24 +45,24 @@ nav a:hover {
 }
 
 /* ========== Hero 主视觉区 ========== */
-/* ========== Hero 主视觉区 ========== */
 .hero {
   background: white;
   text-align: center;
-  padding: 80px 20px 60px; /* 加大上下留白，突出焦点 */
+  padding: 100px 20px 80px;
 }
 
 .hero h1 {
-  margin-bottom: 12px;
-  font-size: 26px;
+  margin-bottom: 16px;
+  font-size: 28px;
   font-weight: 700;
-  color: #004e8f; /* 品牌蓝，突出主语义 */
+  color: #004e8f;
+  line-height: 1.4;
 }
 
 .hero p {
   font-size: 15px;
   color: #666;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 .hero-buttons {
@@ -110,36 +110,27 @@ nav a:hover {
 
 /* ========== 三项优势区 ========== */
 .features {
+  background: white;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 30px 20px;
   display: flex;
   justify-content: center;
   gap: 30px;
-  padding: 20px;
-  background: #f4f4f4;
   font-size: 16px;
 }
 
 .features div {
   display: flex;
   align-items: center;
-  gap: 8px;
-}
-
-/* ========== Logo 信任区 ========== */
-.logos {
-  padding: 20px;
-  text-align: center;
-}
-
-.logos-slider img {
-  width: 100px;
-  margin: 0 10px;
+  gap: 10px;
 }
 
 /* ========== 实时报价区 ========== */
 #devis-widget {
   max-width: 480px;
-  margin: 30px auto 50px;
-  padding: 30px 25px;
+  margin: 60px auto;
+  padding: 40px 30px;
   border-radius: 12px;
   background: #fff;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
@@ -147,9 +138,9 @@ nav a:hover {
 }
 
 #devis-widget h2 {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 600;
-  margin-bottom: 6px;
+  margin-bottom: 16px;
   color: #222;
 }
 
@@ -173,7 +164,7 @@ nav a:hover {
 label {
   font-weight: 600;
   font-size: 14px;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   display: block;
   color: #333;
 }
@@ -183,7 +174,7 @@ select {
   width: 100%;
   padding: 10px;
   font-size: 14px;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   border: 1px solid #ccc;
   border-radius: 6px;
   background-color: #fafafa;
@@ -268,12 +259,13 @@ select.error {
 
 /* ========== 页脚 ========== */
 footer {
-  background: #f0f0f0;
+  background: white;
   color: #666;
   text-align: center;
-  padding: 20px;
-  margin-top: 50px;
+  padding: 30px 20px;
+  margin-top: 60px;
   font-size: 14px;
+  border-top: 1px solid #e2e8f0;
 }
 
 footer a {
@@ -285,20 +277,21 @@ footer a {
 /* ========== 响应式设计 ========== */
 @media screen and (max-width: 600px) {
   .hero h1 {
-    font-size: 18px;
+    font-size: 20px;
   }
   .hero-buttons {
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
   }
   nav a {
     font-size: 13px;
-    margin: 0 5px;
+    margin: 0 8px;
   }
   .logo {
-    font-size: 20px;
+    font-size: 22px;
   }
   #devis-widget {
-    padding: 20px 15px;
+    padding: 25px 20px;
   }
 }
+
