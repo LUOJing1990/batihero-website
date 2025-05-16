@@ -14,24 +14,34 @@ a {
 
 /* ========== 顶部导航栏 ========== */
 header {
-  background: #2c3e50;
-  color: white;
+  background: #ffffff;
+  color: #333;
   padding: 20px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .logo {
   font-size: 26px;
   font-weight: bold;
   letter-spacing: 0.5px;
+  color: #007bff;
 }
 
 nav a {
-  color: white;
+  color: #333;
   margin: 0 15px;
   font-size: 15px;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #007bff;
 }
 
 /* ========== Hero 主视觉区 ========== */
@@ -251,8 +261,8 @@ select.error {
 
 /* ========== 页脚 ========== */
 footer {
-  background: #2c3e50;
-  color: white;
+  background: #f0f0f0;
+  color: #666;
   text-align: center;
   padding: 20px;
   margin-top: 50px;
@@ -260,7 +270,7 @@ footer {
 }
 
 footer a {
-  color: #ecf0f1;
+  color: #007bff;
   margin: 0 5px;
   text-decoration: underline;
 }
