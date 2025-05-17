@@ -169,18 +169,11 @@ input.error {
 }
 
 .size-hint {
-  font-size: 13px;
+  font-size: 12px;
   color: #e74c3c;
-  margin-top: -15px;
+  margin-top: -18px;
   margin-bottom: 18px;
-  padding-left: 4px;
-  display: flex;
-  align-items: center;
-}
-
-.size-hint::before {
-  content: "⚠️";
-  margin-right: 6px;
+  padding-left: 2px;
 }
 
 /* ======== 选项按钮组 ======== */
@@ -193,8 +186,8 @@ input.error {
 }
 
 .option-btn {
-  flex: 1 1 calc(25% - 10px); /* 每行最多 4 个按钮 */
-  min-width: 110px;
+  flex: 1 1 calc(25% - 10px);
+  min-width: 120px;
   padding: 10px 8px;
   border: 1px solid #cbdafc;
   background: #f5f8ff;
@@ -216,8 +209,6 @@ input.error {
   background: #007bff;
   border-color: #007bff;
   color: white;
-  font-weight: 600;
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }
 
 .option-btn.disabled {
@@ -225,7 +216,7 @@ input.error {
   pointer-events: none;
 }
 
-/* ======== 提交按钮样式 ======== */
+/* ======== 提交按钮 ======== */
 #gh-devisBtn {
   width: 100%;
   background-color: #27ae60;
@@ -288,22 +279,22 @@ footer a {
 }
 
 /* ======== 响应式调整 ======== */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 600px) {
   .option-btn {
     flex: 1 1 calc(50% - 10px);
   }
 
   .hero h1 {
-    font-size: 22px;
-  }
-
-  .logo {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   nav a {
     font-size: 13px;
     margin: 0 8px;
+  }
+
+  .logo {
+    font-size: 22px;
   }
 
   #devis-widget {
