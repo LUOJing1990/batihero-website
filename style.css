@@ -8,7 +8,7 @@ body {
   line-height: 1.5;
 }
 .container {
-  max-width: 960px;
+  max-width: 1240px;
   margin: auto;
   padding: 20px;
 }
@@ -125,7 +125,7 @@ header .container {
   align-items: flex-start;
 }
 .preview {
-  flex: 1 1 280px;
+  flex: 1 1 300px;
   background: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -140,7 +140,7 @@ header .container {
   max-height: 160px;
 }
 form {
-  flex: 1 1 500px;
+  flex: 1 1 600px;
 }
 fieldset {
   border: none;
@@ -166,6 +166,10 @@ input[type="number"] {
   margin-bottom: 12px;
   background: #fdfdfd;
 }
+input.error {
+  border: 1px solid #e74c3c;
+  background: #fff6f6;
+}
 .hint {
   font-size: 12px;
   color: #e74c3c;
@@ -178,14 +182,17 @@ input[type="number"] {
   gap: 10px;
 }
 .option-grid button {
-  flex: 1 1 calc(33.3% - 10px);
-  padding: 8px;
+  flex: 1 1 calc(20% - 10px);
+  max-width: 200px;
+  min-width: 100px;
+  padding: 10px;
   font-size: 13px;
   border: 1px solid #cbdafc;
   background: #f0f6ff;
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 .option-grid button:hover {
   background: #e6f1ff;
