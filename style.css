@@ -113,7 +113,7 @@ nav a:hover {
 #devis-widget {
   max-width: 960px;
   margin: 40px auto;
-  padding: 10px 10px;
+  padding: 40px 30px;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
@@ -135,13 +135,13 @@ nav a:hover {
 .form-subtitle {
   font-size: 13px;
   color: #777;
-  margin-bottom: 5px;
+  margin-bottom: 20px;
 }
 
 .form-reminder {
   background: #eef6fd;
-  padding: 5px 5px;
-  margin-bottom: 5px;
+  padding: 14px 16px;
+  margin-bottom: 25px;
   border-left: 4px solid #007BFF;
   font-size: 13.5px;
   color: #333;
@@ -287,8 +287,8 @@ footer a {
 .preview-box {
   width: 100%;
   max-width: 320px;
-  height: 100px;
-  margin-bottom: 5px;
+  height: 280px;
+  margin-bottom: 20px;
   border: 2px solid #eee;
   border-radius: 8px;
   background: white;
