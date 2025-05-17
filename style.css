@@ -16,7 +16,7 @@ a {
   text-decoration: none;
 }
 
-/* ======== 头部导航 ======== */
+/* ======== 顶部导航 ======== */
 header {
   background: #ffffff;
   color: #333;
@@ -109,6 +109,19 @@ nav a:hover {
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+.btn.loading {
+  pointer-events: none;
+  opacity: 0.6;
+  position: relative;
+}
+
+.btn.loading::after {
+  content: '⏳';
+  position: absolute;
+  right: 10px;
+  font-size: 14px;
+}
+
 /* ======== 表单容器 ======== */
 #devis-widget {
   max-width: 880px;
@@ -157,7 +170,7 @@ label {
   margin: 18px 0 8px;
 }
 
-/* ======== 输入框样式 ======== */
+/* ======== 输入框 ======== */
 input {
   width: 100%;
   padding: 9px;
@@ -169,10 +182,11 @@ input {
 }
 
 input.error {
-  border-color: #e74c3c;
+  border: 2px solid #e74c3c;
   background-color: #fff6f6;
 }
 
+/* ======== 尺寸提示 ======== */
 .size-hint {
   font-size: 12px;
   color: #e74c3c;
@@ -221,6 +235,11 @@ input.error {
   pointer-events: none;
 }
 
+.option-btn:active {
+  transform: scale(0.96);
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.15);
+}
+
 /* ======== 提交按钮 ======== */
 #gh-devisBtn {
   width: 100%;
@@ -260,10 +279,31 @@ input.error {
   100% { transform: translateY(-50%) rotate(360deg); }
 }
 
+/* ======== 结果显示 ======== */
 #gh-result {
   margin-top: 12px;
   font-size: 15px;
   color: #007BFF;
+}
+
+/* ======== 图像展示盒子 ======== */
+.preview-box {
+  width: 100%;
+  max-width: 300px;
+  height: 100px;
+  margin-bottom: 2px;
+  border: 2px solid #eee;
+  border-radius: 8px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preview-box img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
 }
 
 /* ======== 页脚 ======== */
@@ -282,28 +322,6 @@ footer a {
   text-decoration: underline;
   margin: 0 5px;
 }
-
-/* ======== 图像展示盒子 ======== */
-/* ======== 图像展示盒子 ======== */
-.preview-box {
-  width: 100%;
-  max-width: 300px;
-  height: 100px; /* 从 250px 缩小为 180px */
-  margin-bottom: 2px; /* 从 16px 缩小为 8px */
-  border: 2px solid #eee;
-  border-radius: 8px;
-  background: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.preview-box img {
-  max-width: 90%;
-  max-height: 90%;
-  object-fit: contain;
-}
-
 
 /* ======== 响应式调整 ======== */
 @media screen and (max-width: 600px) {
