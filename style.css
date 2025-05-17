@@ -290,6 +290,9 @@ footer a {
     padding: 25px 20px;
   }
 }
+html {
+  scroll-behavior: smooth;
+}
 
 
 
