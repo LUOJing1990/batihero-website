@@ -113,7 +113,7 @@ nav a:hover {
 #devis-widget {
   max-width: 960px;
   margin: 40px auto;
-  padding: 40px 30px;
+  padding: 30px 30px; /* 原为 padding: 40px 30px，上部压缩 */
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
@@ -138,15 +138,20 @@ nav a:hover {
   margin-bottom: 20px;
 }
 
+/* 紧凑化优化：缩减步骤说明与下方间距 */
 .form-reminder {
   background: #eef6fd;
   padding: 14px 16px;
-  margin-bottom: 25px;
+  margin-bottom: 12px; /* 原为 25px，已压缩 */
   border-left: 4px solid #007BFF;
   font-size: 13.5px;
   color: #333;
   border-radius: 6px;
   line-height: 1.6;
+}
+
+.form-wrapper label:first-of-type {
+  margin-top: 10px !important; /* 原为 25px */
 }
 
 label {
@@ -301,6 +306,16 @@ footer a {
   max-width: 90%;
   max-height: 90%;
   object-fit: contain;
+}
+
+/* ======== 优化图像与表单距离 ======== */
+.widget-flex {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px; /* 原为 40px */
+  flex-wrap: wrap;
+  margin-top: 20px; /* 原为 30px */
 }
 
 /* ======== 响应式调整 ======== */
