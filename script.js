@@ -29,23 +29,35 @@ const sizeLimits = {
   SOUFFLET_PVC:                 { width: [600, 1500], height: [450, 950] }
 };
 
-// 接口地址
-const API_URL = 'https://80a67dd4-043a-437b-9b31-fec40991fe12-00-4rtgpz7r016u.worf.replit.dev/api/devis';
+// 图像路径绑定表
+function updateFenetreImage(type) {
+  const imgEl = document.getElementById('preview-img');
+  const imageMap = {
+    FIXED_WINDOW_PRICING: 'images/fenetre_fixe.png',
+    COULISSANT_PVC: 'images/coulissant.png',
+    OB_1_VANTAIL_PVC: 'images/ob_1.png',
+    OF_1_VANTAIL_PVC: 'images/of_1.png',
+    OF_2_VANTAUX_PVC: 'images/of_2.png',
+    OF_3_VANTAUX_PVC: 'images/of_3.png',
+    OF_4_VANTAUX_PVC: 'images/of_4.png',
+    OF2_1_FIXE_PVC: 'images/of2_1.png',
+    OF2_2_FIXES_PVC: 'images/of2_2.png',
+    PORTE_1_VANTAIL_PVC: 'images/porte_1.png',
+    PORTE_FENETRE_1_PVC: 'images/porte_fenetre_1.png',
+    PORTE_FENETRE_2_FIXE_1_PVC: 'images/pf_2_f1.png',
+    PORTE_FENETRE_2_FIXE_2_PVC: 'images/pf_2_f2.png',
+    PORTE_FENETRE_2_PVC: 'images/pf_2.png',
+    PORTE_FENETRE_3_PVC: 'images/pf_3.png',
+    PORTE_FENETRE_4_PVC: 'images/pf_4.png',
+    SOUFFLET_PVC: 'images/soufflet.png'
+  };
 
-// 按钮激活管理
-function setActiveBtnGroup(step, value) {
-  document.querySelectorAll(`.option-btn[data-step="${step}"]`).forEach(btn => {
-    btn.classList.remove('active');
-    if (btn.dataset.value === value) btn.classList.add('active');
-  });
-  config[step] = value;
-
-  if (step === 'type') updateSizeHint();
-  if (step === 'type') {
-  updateSizeHint();
-  updateFenetreImage(value);
-}
-  if (['type', 'width', 'height'].includes(step)) updateOBButtonState();
+  if (imageMap[type]) {
+    imgEl.src = imageMap[type];
+    imgEl.style.display = 'block';
+  } else {
+    imgEl.style.display = 'none';
+  }
 }
 
 // OB 按钮启用/禁用逻辑
@@ -86,6 +98,22 @@ function updateOBButtonState() {
 
   const leafWidth = type.includes('2') ? w / 2 : w;
   toggleOBDisabled(leafWidth > 800 || h > 2000);
+}
+
+// 按钮激活 + 类型联动处理
+function setActiveBtnGroup(step, value) {
+  document.querySelectorAll(`.option-btn[data-step="${step}"]`).forEach(btn => {
+    btn.classList.remove('active');
+    if (btn.dataset.value === value) btn.classList.add('active');
+  });
+  config[step] = value;
+
+  if (step === 'type') {
+    updateSizeHint();
+    updateFenetreImage(value);
+  }
+
+  if (['type', 'width', 'height'].includes(step)) updateOBButtonState();
 }
 
 // 页面初始化与交互绑定
@@ -143,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
     out.textContent = "Chargement du devis...";
 
     try {
-      const resp = await fetch(API_URL, {
+      const resp = await fetch('https://80a67dd4-043a-437b-9b31-fec40991fe12-00-4rtgpz7r016u.worf.replit.dev/api/devis', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -178,32 +206,3 @@ document.addEventListener('DOMContentLoaded', () => {
   updateSizeHint();
   updateOBButtonState();
 });
-function updateFenetreImage(type) {
-  const imgEl = document.getElementById('preview-img');
-  const imageMap = {
-    FIXED_WINDOW_PRICING: 'images/fenetre_fixe.png',
-    COULISSANT_PVC: 'images/coulissant.png',
-    OB_1_VANTAIL_PVC: 'images/ob_1.png',
-    OF_1_VANTAIL_PVC: 'images/of_1.png',
-    OF_2_VANTAUX_PVC: 'images/of_2.png',
-    OF_3_VANTAUX_PVC: 'images/of_3.png',
-    OF_4_VANTAUX_PVC: 'images/of_4.png',
-    OF2_1_FIXE_PVC: 'images/of2_1.png',
-    OF2_2_FIXES_PVC: 'images/of2_2.png',
-    PORTE_1_VANTAIL_PVC: 'images/porte_1.png',
-    PORTE_FENETRE_1_PVC: 'images/porte_fenetre_1.png',
-    PORTE_FENETRE_2_FIXE_1_PVC: 'images/pf_2_f1.png',
-    PORTE_FENETRE_2_FIXE_2_PVC: 'images/pf_2_f2.png',
-    PORTE_FENETRE_2_PVC: 'images/pf_2.png',
-    PORTE_FENETRE_3_PVC: 'images/pf_3.png',
-    PORTE_FENETRE_4_PVC: 'images/pf_4.png',
-    SOUFFLET_PVC: 'images/soufflet.png'
-  };
-
-  if (imageMap[type]) {
-    imgEl.src = imageMap[type];
-    imgEl.style.display = 'block';
-  } else {
-    imgEl.style.display = 'none';
-  }
-}
