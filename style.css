@@ -111,13 +111,18 @@ nav a:hover {
 
 /* ======== 表单容器 ======== */
 #devis-widget {
-  max-width: 720px;
+  max-width: 960px;
   margin: 40px auto;
   padding: 40px 30px;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
   border: 1px solid #e2e8f0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 #devis-widget h2 {
@@ -278,6 +283,26 @@ footer a {
   margin: 0 5px;
 }
 
+/* ======== 图像展示盒子 ======== */
+.preview-box {
+  width: 100%;
+  max-width: 320px;
+  height: 280px;
+  margin-bottom: 20px;
+  border: 2px solid #eee;
+  border-radius: 8px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preview-box img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
 /* ======== 响应式调整 ======== */
 @media screen and (max-width: 600px) {
   .option-btn {
@@ -298,24 +323,7 @@ footer a {
   }
 
   #devis-widget {
+    flex-direction: column;
     padding: 25px 20px;
   }
-}
-.preview-box {
-  width: 100%;
-  max-width: 320px;
-  height: 280px;
-  margin-bottom: 20px;
-  border: 2px solid #eee;
-  border-radius: 8px;
-  background: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.preview-box img {
-  max-width: 90%;
-  max-height: 90%;
-  object-fit: contain;
 }
