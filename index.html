@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <title>BatiHero — Devis fenêtres & installation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -26,18 +26,24 @@
     <a href="#" class="btn btn-blue">Je suis installateur — Commander rapidement</a>
   </div>
 </section>
-  
+
+<section class="features">
+  <div><span>✅</span> Prix transparents</div>
+  <div><span>✅</span> Livraison rapide</div>
+  <div><span>✅</span> Pose certifiée</div>
+</section>
+
 <section id="devis-widget">
   <h2>Estimez le prix de votre fenêtre en 1 minute</h2>
   <p class="form-subtitle">Remplissez les champs ci-dessous pour obtenir une estimation immédiate.</p>
 
   <div class="form-reminder">
-    📌 <strong>Étapes pour obtenir votre devis :</strong><br>
-    1. Type → 2. Dimensions → 3. Couleur → 4. Vitrage → 5. OB (optionnel)
+    📌 <strong>Étapes :</strong> 1. Type → 2. Dimensions → 3. Couleur → 4. Vitrage → 5. OB (optionnel)
   </div>
 
+  <!-- Type de fenêtre -->
   <label>Type de fenêtre :</label>
-  <div id="type-options" class="btn-group grid-3x6">
+  <div class="option-group type-grid">
     <button class="option-btn" data-step="type" data-value="FIXED_WINDOW_PRICING">Fenêtre fixe</button>
     <button class="option-btn" data-step="type" data-value="COULISSANT_PVC">Coulissant</button>
     <button class="option-btn" data-step="type" data-value="OB_1_VANTAIL_PVC">OB 1 vantail</button>
@@ -57,6 +63,7 @@
     <button class="option-btn" data-step="type" data-value="SOUFFLET_PVC">Soufflet</button>
   </div>
 
+  <!-- Dimensions -->
   <label for="gh-width">Largeur (mm) :</label>
   <input id="gh-width" type="number" placeholder="ex. 1250">
   <div class="size-hint" id="hint-width"></div>
@@ -65,27 +72,31 @@
   <input id="gh-height" type="number" placeholder="ex. 1451">
   <div class="size-hint" id="hint-height"></div>
 
+  <!-- Couleur -->
   <label>Couleur :</label>
-  <div id="color-options" class="btn-group">
+  <div class="option-group">
     <button class="option-btn" data-step="color" data-value="blanc">Blanc</button>
     <button class="option-btn" data-step="color" data-value="blanc_color">Ext couleur / int blanc</button>
     <button class="option-btn" data-step="color" data-value="couleur">Couleur deux faces</button>
   </div>
 
+  <!-- Vitrage -->
   <label>Type de vitrage :</label>
-  <div id="vitrage-options" class="btn-group">
+  <div class="option-group">
     <button class="option-btn" data-step="vitrage" data-value="4-20-4">4-20-4</button>
     <button class="option-btn" data-step="vitrage" data-value="4-20-4g200">4-20-4 G200</button>
     <button class="option-btn" data-step="vitrage" data-value="44.2-16-4">44.2-16-4</button>
     <button class="option-btn" data-step="vitrage" data-value="44.2opale-16-4">44.2 opale - 16-4</button>
   </div>
 
+  <!-- OB -->
   <label>Système OB :</label>
-  <div id="ob-options" class="btn-group">
-    <button type="button" id="btn-ob-oui" class="option-btn" data-step="ob" data-value="oui">Oui</button>
+  <div class="option-group">
+    <button type="button" class="option-btn" id="btn-ob-oui" data-step="ob" data-value="oui">Oui</button>
     <button type="button" class="option-btn" data-step="ob" data-value="non">Non</button>
   </div>
 
+  <!-- 提交按钮 -->
   <button id="gh-devisBtn">Obtenir le prix</button>
   <div id="gh-result"></div>
 </section>
@@ -94,6 +105,10 @@
   <p>© 2025 BatiHero. Tous droits réservés.</p>
   <p><a href="#">Mentions légales</a> | <a href="#">CGV</a></p>
 </footer>
+
+<script src="script.js"></script>
+</body>
+</html>
 
 <script src="script.js"></script>
 </body>
