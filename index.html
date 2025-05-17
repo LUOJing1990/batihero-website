@@ -2,142 +2,148 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BatiHero — Estimation fenêtres</title>
+  <title>BatiHero — Devis fenêtres & installation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="images/favicon.png">
+  <style>
+    .widget-flex {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .preview-box {
+      width: 280px;
+      height: 280px;
+      border: 2px solid #eee;
+      border-radius: 10px;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .preview-box img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .form-wrapper {
+      max-width: 720px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .widget-flex {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .preview-box {
+        margin-bottom: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <div class="logo">🔧 <span>BatiHero</span></div>
-      <nav>
-        <a href="#solutions">Solutions</a>
-        <a href="#contact">Contact</a>
-        <a href="#login">Connexion</a>
-      </nav>
-    </div>
-  </header>
 
-  <section class="hero">
-    <div class="container">
-      <h1>Obtenez votre devis fenêtres en 1 minute</h1>
-      <p class="sub">✅ Pose incluse · 🔐 Données non enregistrées · 🤝 Sans engagement</p>
-      <div class="cta-buttons">
-        <a href="#devis" class="btn primary">Je suis propriétaire</a>
-        <a href="#contact" class="btn secondary">Je suis installateur</a>
+<header>
+  <div class="logo">BatiHero</div>
+  <nav>
+    <a href="#solutions">Solutions</a>
+    <a href="#contact">Contact</a>
+    <a href="#login">Connexion</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Obtenez rapidement un devis fenêtres<br>avec installation garantie</h1>
+  <p>Un devis clair, juste et immédiat.</p>
+  <div class="hero-buttons">
+    <a href="#devis-widget" class="btn btn-green">Je suis propriétaire — Obtenir un devis</a>
+    <a href="#" class="btn btn-blue">Je suis installateur — Commander rapidement</a>
+  </div>
+</section>
+
+<section id="devis-widget">
+  <h2>Estimez le prix de votre fenêtre en 1 minute</h2>
+  <p class="form-subtitle">Remplissez les champs ci-dessous pour obtenir une estimation immédiate.</p>
+
+  <div class="form-reminder">
+    📌 <strong>Étapes :</strong> 1. Type → 2. Dimensions → 3. Couleur → 4. Vitrage → 5. OB (optionnel)
+  </div>
+
+  <div class="widget-flex">
+    <div class="preview-box">
+      <img id="preview-img" src="" alt="Aperçu fenêtre" style="display: none;" />
+    </div>
+
+    <div class="form-wrapper">
+      <label>Type de fenêtre :</label>
+      <div class="option-group">
+        <button class="option-btn" data-step="type" data-value="FIXED_WINDOW_PRICING">Fenêtre fixe</button>
+        <button class="option-btn" data-step="type" data-value="COULISSANT_PVC">Coulissant</button>
+        <button class="option-btn" data-step="type" data-value="OB_1_VANTAIL_PVC">OB 1 vantail</button>
+        <button class="option-btn" data-step="type" data-value="OF_1_VANTAIL_PVC">OF 1 vantail</button>
+        <button class="option-btn" data-step="type" data-value="OF_2_VANTAUX_PVC">OF 2 vantaux</button>
+        <button class="option-btn" data-step="type" data-value="OF_3_VANTAUX_PVC">OF 3 vantaux</button>
+        <button class="option-btn" data-step="type" data-value="OF_4_VANTAUX_PVC">OF 4 vantaux</button>
+        <button class="option-btn" data-step="type" data-value="OF2_1_FIXE_PVC">OF2_1 Fixe</button>
+        <button class="option-btn" data-step="type" data-value="OF2_2_FIXES_PVC">OF2_2 Fixes</button>
+        <button class="option-btn" data-step="type" data-value="PORTE_1_VANTAIL_PVC">Porte 1 vantail</button>
+        <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_1_PVC">Porte-fenêtre 1</button>
+        <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_2_FIXE_1_PVC">PF 2 Fixe 1</button>
+        <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_2_FIXE_2_PVC">PF 2 Fixe 2</button>
+        <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_2_PVC">PF 2</button>
+        <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_3_PVC">PF 3</button>
+        <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_4_PVC">PF 4</button>
+        <button class="option-btn" data-step="type" data-value="SOUFFLET_PVC">Soufflet</button>
       </div>
-    </div>
-  </section>
 
-  <section id="devis" class="devis-section">
-    <div class="container">
-      <h2>Estimez votre fenêtre en 1 minute</h2>
-      <div class="steps-bar">
-        <span class="active">1. Type</span>
-        <span>2. Dimensions</span>
-        <span>3. Couleur</span>
-        <span>4. Vitrage</span>
-        <span>5. OB (optionnel)</span>
+      <label for="gh-width">Largeur (mm) :</label>
+      <input id="gh-width" type="number" placeholder="ex. 1250">
+      <div class="size-hint" id="hint-width"></div>
+
+      <label for="gh-height">Hauteur (mm) :</label>
+      <input id="gh-height" type="number" placeholder="ex. 1451">
+      <div class="size-hint" id="hint-height"></div>
+
+      <label>Couleur :</label>
+      <div class="option-group">
+        <button class="option-btn" data-step="color" data-value="blanc">Blanc</button>
+        <button class="option-btn" data-step="color" data-value="blanc_color">Ext couleur / int blanc</button>
+        <button class="option-btn" data-step="color" data-value="couleur">Couleur deux faces</button>
       </div>
 
-      <div class="form-area">
-        <div class="preview">
-          <img id="preview-img" src="images/default-window.png" alt="Aperçu de la fenêtre">
-        </div>
-
-        <form id="fenetre-form">
-          <fieldset>
-            <legend>Type de fenêtre</legend>
-            <div class="option-grid" id="type-options">
-              <button class="option-btn" data-step="type" data-value="FIXED_WINDOW_PRICING">Fenêtre fixe</button>
-              <button class="option-btn" data-step="type" data-value="COULISSANT_PVC">Coulissant</button>
-              <button class="option-btn" data-step="type" data-value="OB_1_VANTAIL_PVC">OB 1 vantail</button>
-              <button class="option-btn" data-step="type" data-value="OF_1_VANTAIL_PVC">OF 1 vantail</button>
-              <button class="option-btn" data-step="type" data-value="OF_2_VANTAUX_PVC">OF 2 vantaux</button>
-              <button class="option-btn" data-step="type" data-value="OF_3_VANTAUX_PVC">OF 3 vantaux</button>
-              <button class="option-btn" data-step="type" data-value="OF_4_VANTAUX_PVC">OF 4 vantaux</button>
-              <button class="option-btn" data-step="type" data-value="OF2_1_FIXE_PVC">OF2_1 Fixe</button>
-              <button class="option-btn" data-step="type" data-value="OF2_2_FIXES_PVC">OF2_2 Fixes</button>
-              <button class="option-btn" data-step="type" data-value="PORTE_1_VANTAIL_PVC">Porte 1 vantail</button>
-              <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_1_PVC">Porte-fenêtre 1</button>
-              <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_2_FIXE_1_PVC">PF 2 Fixe 1</button>
-              <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_2_FIXE_2_PVC">PF 2 Fixe 2</button>
-              <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_2_PVC">PF 2</button>
-              <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_3_PVC">PF 3</button>
-              <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_4_PVC">PF 4</button>
-              <button class="option-btn" data-step="type" data-value="SOUFFLET_PVC">Soufflet</button>
-            </div>
-          </fieldset>
-
-          <fieldset>
-            <legend>Dimensions (mm)</legend>
-            <label>Largeur :</label>
-            <input id="gh-width" type="number" placeholder="ex. 1250">
-            <div class="hint" id="hint-width"></div>
-
-            <label>Hauteur :</label>
-            <input id="gh-height" type="number" placeholder="ex. 1451">
-            <div class="hint" id="hint-height"></div>
-          </fieldset>
-
-          <fieldset>
-            <legend>Couleur</legend>
-            <div class="option-grid" id="color-options">
-              <button class="option-btn" data-step="color" data-value="blanc">Blanc</button>
-              <button class="option-btn" data-step="color" data-value="blanc_color">Ext couleur / int blanc</button>
-              <button class="option-btn" data-step="color" data-value="couleur">Couleur deux faces</button>
-            </div>
-          </fieldset>
-
-          <fieldset>
-            <legend>Vitrage</legend>
-            <div class="option-grid" id="vitrage-options">
-              <button class="option-btn" data-step="vitrage" data-value="4-20-4">4-20-4</button>
-              <button class="option-btn" data-step="vitrage" data-value="4-20-4g200">4-20-4 G200</button>
-              <button class="option-btn" data-step="vitrage" data-value="44.2-16-4">44.2-16-4</button>
-              <button class="option-btn" data-step="vitrage" data-value="44.2opale-16-4">44.2 opale - 16-4</button>
-            </div>
-          </fieldset>
-
-          <fieldset>
-            <legend>Système OB</legend>
-            <div class="option-grid" id="ob-options">
-              <button class="option-btn" data-step="ob" data-value="oui">Oui</button>
-              <button class="option-btn" data-step="ob" data-value="non">Non</button>
-            </div>
-          </fieldset>
-
-          <button id="gh-devisBtn" type="button" class="btn primary full">Obtenir le prix</button>
-          <div id="gh-result"></div>
-          <div id="cta-after-result" style="display:none" class="cta-after">
-            <a href="#contact" class="btn primary">📅 Réservez votre installation gratuite</a>
-            <p class="mini">Sans engagement — Rappel sous 24h</p>
-          </div>
-        </form>
+      <label>Type de vitrage :</label>
+      <div class="option-group">
+        <button class="option-btn" data-step="vitrage" data-value="4-20-4">4-20-4</button>
+        <button class="option-btn" data-step="vitrage" data-value="4-20-4g200">4-20-4 G200</button>
+        <button class="option-btn" data-step="vitrage" data-value="44.2-16-4">44.2-16-4</button>
+        <button class="option-btn" data-step="vitrage" data-value="44.2opale-16-4">44.2 opale - 16-4</button>
       </div>
-    </div>
-  </section>
 
-  <section class="faq">
-    <div class="container">
-      <h3>❓ Questions fréquentes</h3>
-      <ul>
-        <li><strong>Le devis est-il gratuit ?</strong> — Oui, sans aucun engagement.</li>
-        <li><strong>Quel est le délai de pose ?</strong> — En moyenne 2 à 3 semaines après validation.</li>
-        <li><strong>La TVA est-elle incluse ?</strong> — Tous les prix sont TTC.</li>
-      </ul>
-    </div>
-  </section>
+      <label>Système OB :</label>
+      <div class="option-group">
+        <button type="button" class="option-btn" id="btn-ob-oui" data-step="ob" data-value="oui">Oui</button>
+        <button type="button" class="option-btn" data-step="ob" data-value="non">Non</button>
+      </div>
 
-  <footer>
-    <div class="container">
-      <p>© 2025 BatiHero. Tous droits réservés.</p>
-      <p><a href="#">Mentions légales</a> | <a href="#">CGV</a></p>
-      <p class="mini">Entreprise enregistrée en France · SIRET 123 456 789 00000</p>
+      <button id="gh-devisBtn">Obtenir le prix</button>
+      <div id="gh-result"></div>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script src="script.js"></script>
+<footer>
+  <p>© 2025 BatiHero. Tous droits réservés.</p>
+  <p><a href="#">Mentions légales</a> | <a href="#">CGV</a></p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
