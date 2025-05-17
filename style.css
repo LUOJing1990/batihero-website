@@ -301,3 +301,21 @@ footer a {
     padding: 25px 20px;
   }
 }
+.preview-box {
+  width: 100%;
+  max-width: 320px;
+  height: 280px;
+  margin-bottom: 20px;
+  border: 2px solid #eee;
+  border-radius: 8px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preview-box img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
