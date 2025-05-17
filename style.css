@@ -284,11 +284,12 @@ footer a {
 }
 
 /* ======== 图像展示盒子 ======== */
+/* ======== 图像展示盒子 ======== */
 .preview-box {
   width: 100%;
   max-width: 300px;
-  height: 250px;
-  margin-bottom: 16px;
+  height: 180px; /* 从 250px 缩小为 180px */
+  margin-bottom: 8px; /* 从 16px 缩小为 8px */
   border: 2px solid #eee;
   border-radius: 8px;
   background: white;
@@ -302,6 +303,7 @@ footer a {
   max-height: 90%;
   object-fit: contain;
 }
+
 
 /* ======== 响应式调整 ======== */
 @media screen and (max-width: 600px) {
