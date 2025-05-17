@@ -6,6 +6,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="stylesheet" href="style.css">
+  <style>
+    .widget-flex {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .preview-box {
+      width: 280px;
+      height: 280px;
+      border: 2px solid #eee;
+      border-radius: 10px;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .preview-box img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .form-wrapper {
+      max-width: 720px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .widget-flex {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .preview-box {
+        margin-bottom: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -34,68 +76,67 @@
   <div class="form-reminder">
     📌 <strong>Étapes :</strong> 1. Type → 2. Dimensions → 3. Couleur → 4. Vitrage → 5. OB (optionnel)
   </div>
-  
-<div id="fenetre-image-preview" class="preview-box">
-  <img id="preview-img" src="" alt="Aperçu fenêtre" style="display: none;" />
-</div>
-  <!-- Type de fenêtre -->
-  <label>Type de fenêtre :</label>
-  <div class="option-group">
-    <button class="option-btn" data-step="type" data-value="FIXED_WINDOW_PRICING">Fenêtre fixe</button>
-    <button class="option-btn" data-step="type" data-value="COULISSANT_PVC">Coulissant</button>
-    <button class="option-btn" data-step="type" data-value="OB_1_VANTAIL_PVC">OB 1 vantail</button>
-    <button class="option-btn" data-step="type" data-value="OF_1_VANTAIL_PVC">OF 1 vantail</button>
-    <button class="option-btn" data-step="type" data-value="OF_2_VANTAUX_PVC">OF 2 vantaux</button>
-    <button class="option-btn" data-step="type" data-value="OF_3_VANTAUX_PVC">OF 3 vantaux</button>
-    <button class="option-btn" data-step="type" data-value="OF_4_VANTAUX_PVC">OF 4 vantaux</button>
-    <button class="option-btn" data-step="type" data-value="OF2_1_FIXE_PVC">OF2_1 Fixe</button>
-    <button class="option-btn" data-step="type" data-value="OF2_2_FIXES_PVC">OF2_2 Fixes</button>
-    <button class="option-btn" data-step="type" data-value="PORTE_1_VANTAIL_PVC">Porte 1 vantail</button>
-    <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_1_PVC">Porte-fenêtre 1</button>
-    <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_2_FIXE_1_PVC">PF 2 Fixe 1</button>
-    <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_2_FIXE_2_PVC">PF 2 Fixe 2</button>
-    <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_2_PVC">PF 2</button>
-    <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_3_PVC">PF 3</button>
-    <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_4_PVC">PF 4</button>
-    <button class="option-btn" data-step="type" data-value="SOUFFLET_PVC">Soufflet</button>
+
+  <div class="widget-flex">
+    <div class="preview-box">
+      <img id="preview-img" src="" alt="Aperçu fenêtre" style="display: none;" />
+    </div>
+
+    <div class="form-wrapper">
+      <label>Type de fenêtre :</label>
+      <div class="option-group">
+        <button class="option-btn" data-step="type" data-value="FIXED_WINDOW_PRICING">Fenêtre fixe</button>
+        <button class="option-btn" data-step="type" data-value="COULISSANT_PVC">Coulissant</button>
+        <button class="option-btn" data-step="type" data-value="OB_1_VANTAIL_PVC">OB 1 vantail</button>
+        <button class="option-btn" data-step="type" data-value="OF_1_VANTAIL_PVC">OF 1 vantail</button>
+        <button class="option-btn" data-step="type" data-value="OF_2_VANTAUX_PVC">OF 2 vantaux</button>
+        <button class="option-btn" data-step="type" data-value="OF_3_VANTAUX_PVC">OF 3 vantaux</button>
+        <button class="option-btn" data-step="type" data-value="OF_4_VANTAUX_PVC">OF 4 vantaux</button>
+        <button class="option-btn" data-step="type" data-value="OF2_1_FIXE_PVC">OF2_1 Fixe</button>
+        <button class="option-btn" data-step="type" data-value="OF2_2_FIXES_PVC">OF2_2 Fixes</button>
+        <button class="option-btn" data-step="type" data-value="PORTE_1_VANTAIL_PVC">Porte 1 vantail</button>
+        <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_1_PVC">Porte-fenêtre 1</button>
+        <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_2_FIXE_1_PVC">PF 2 Fixe 1</button>
+        <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_2_FIXE_2_PVC">PF 2 Fixe 2</button>
+        <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_2_PVC">PF 2</button>
+        <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_3_PVC">PF 3</button>
+        <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_4_PVC">PF 4</button>
+        <button class="option-btn" data-step="type" data-value="SOUFFLET_PVC">Soufflet</button>
+      </div>
+
+      <label for="gh-width">Largeur (mm) :</label>
+      <input id="gh-width" type="number" placeholder="ex. 1250">
+      <div class="size-hint" id="hint-width"></div>
+
+      <label for="gh-height">Hauteur (mm) :</label>
+      <input id="gh-height" type="number" placeholder="ex. 1451">
+      <div class="size-hint" id="hint-height"></div>
+
+      <label>Couleur :</label>
+      <div class="option-group">
+        <button class="option-btn" data-step="color" data-value="blanc">Blanc</button>
+        <button class="option-btn" data-step="color" data-value="blanc_color">Ext couleur / int blanc</button>
+        <button class="option-btn" data-step="color" data-value="couleur">Couleur deux faces</button>
+      </div>
+
+      <label>Type de vitrage :</label>
+      <div class="option-group">
+        <button class="option-btn" data-step="vitrage" data-value="4-20-4">4-20-4</button>
+        <button class="option-btn" data-step="vitrage" data-value="4-20-4g200">4-20-4 G200</button>
+        <button class="option-btn" data-step="vitrage" data-value="44.2-16-4">44.2-16-4</button>
+        <button class="option-btn" data-step="vitrage" data-value="44.2opale-16-4">44.2 opale - 16-4</button>
+      </div>
+
+      <label>Système OB :</label>
+      <div class="option-group">
+        <button type="button" class="option-btn" id="btn-ob-oui" data-step="ob" data-value="oui">Oui</button>
+        <button type="button" class="option-btn" data-step="ob" data-value="non">Non</button>
+      </div>
+
+      <button id="gh-devisBtn">Obtenir le prix</button>
+      <div id="gh-result"></div>
+    </div>
   </div>
-
-  <!-- Dimensions -->
-  <label for="gh-width">Largeur (mm) :</label>
-  <input id="gh-width" type="number" placeholder="ex. 1250">
-  <div class="size-hint" id="hint-width"></div>
-
-  <label for="gh-height">Hauteur (mm) :</label>
-  <input id="gh-height" type="number" placeholder="ex. 1451">
-  <div class="size-hint" id="hint-height"></div>
-
-  <!-- Couleur -->
-  <label>Couleur :</label>
-  <div class="option-group">
-    <button class="option-btn" data-step="color" data-value="blanc">Blanc</button>
-    <button class="option-btn" data-step="color" data-value="blanc_color">Ext couleur / int blanc</button>
-    <button class="option-btn" data-step="color" data-value="couleur">Couleur deux faces</button>
-  </div>
-
-  <!-- Vitrage -->
-  <label>Type de vitrage :</label>
-  <div class="option-group">
-    <button class="option-btn" data-step="vitrage" data-value="4-20-4">4-20-4</button>
-    <button class="option-btn" data-step="vitrage" data-value="4-20-4g200">4-20-4 G200</button>
-    <button class="option-btn" data-step="vitrage" data-value="44.2-16-4">44.2-16-4</button>
-    <button class="option-btn" data-step="vitrage" data-value="44.2opale-16-4">44.2 opale - 16-4</button>
-  </div>
-
-  <!-- OB -->
-  <label>Système OB :</label>
-  <div class="option-group">
-    <button type="button" class="option-btn" id="btn-ob-oui" data-step="ob" data-value="oui">Oui</button>
-    <button type="button" class="option-btn" data-step="ob" data-value="non">Non</button>
-  </div>
-
-  <!-- 提交按钮 -->
-  <button id="gh-devisBtn">Obtenir le prix</button>
-  <div id="gh-result"></div>
 </section>
 
 <footer>
