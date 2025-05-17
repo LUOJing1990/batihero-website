@@ -288,8 +288,8 @@ footer a {
 .preview-box {
   width: 100%;
   max-width: 300px;
-  height: 180px; /* 从 250px 缩小为 180px */
-  margin-bottom: 8px; /* 从 16px 缩小为 8px */
+  height: 100px; /* 从 250px 缩小为 180px */
+  margin-bottom: 2px; /* 从 16px 缩小为 8px */
   border: 2px solid #eee;
   border-radius: 8px;
   background: white;
