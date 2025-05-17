@@ -20,7 +20,7 @@ a {
 header {
   background: #ffffff;
   color: #333;
-  padding: 20px 30px;
+  padding: 16px 24px; /* ↓ 减少内边距 */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -31,16 +31,16 @@ header {
 }
 
 .logo {
-  font-size: 26px;
+  font-size: 22px; /* ↓ 缩小字体 */
   font-weight: bold;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
   color: #007bff;
 }
 
 nav a {
   color: #333;
-  margin: 0 20px;
-  font-size: 15px;
+  margin: 0 16px;
+  font-size: 14px;
   transition: color 0.3s ease;
 }
 
@@ -52,38 +52,38 @@ nav a:hover {
 .hero {
   background: white;
   text-align: center;
-  padding: 40px 20px;
+  padding: 30px 16px; /* ↓ 减少上下留白 */
 }
 
 .hero h1 {
-  margin-bottom: 16px;
-  font-size: 28px;
+  margin-bottom: 12px;
+  font-size: 24px;
   font-weight: 700;
   color: #004e8f;
-  line-height: 1.4;
+  line-height: 1.3;
 }
 
 .hero p {
-  font-size: 15px;
+  font-size: 14px;
   color: #666;
-  margin-bottom: 30px;
+  margin-bottom: 24px;
 }
 
 .hero-buttons {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 16px;
 }
 
 .hero-buttons .btn {
-  min-width: 220px;
-  padding: 12px 20px;
-  border-radius: 40px;
-  font-size: 15px;
+  min-width: 180px;
+  padding: 10px 18px;
+  border-radius: 32px;
+  font-size: 14px;
   font-weight: bold;
   text-align: center;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   text-decoration: none;
 }
@@ -105,71 +105,71 @@ nav a:hover {
 
 .btn-green:active,
 .btn-blue:active {
-  transform: scale(0.96);
+  transform: scale(0.95);
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* ======== 表单容器 ======== */
 #devis-widget {
   max-width: 960px;
-  margin: 40px auto;
-  padding: 30px 30px; /* 原为 padding: 40px 30px，上部压缩 */
+  margin: 30px auto; /* ↓ 原为 40px */
+  padding: 24px 20px; /* ↓ 原为 40px 30px */
   background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
   border: 1px solid #e2e8f0;
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 30px; /* ↓ 原为 40px */
   align-items: flex-start;
   justify-content: center;
 }
 
 #devis-widget h2 {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   color: #222;
 }
 
 .form-subtitle {
-  font-size: 13px;
+  font-size: 12.5px;
   color: #777;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
-/* 紧凑化优化：缩减步骤说明与下方间距 */
+/* 紧凑化步骤说明 */
 .form-reminder {
   background: #eef6fd;
-  padding: 14px 16px;
-  margin-bottom: 12px; /* 原为 25px，已压缩 */
+  padding: 10px 12px;
+  margin-bottom: 10px;
   border-left: 4px solid #007BFF;
-  font-size: 13.5px;
+  font-size: 13px;
   color: #333;
   border-radius: 6px;
-  line-height: 1.6;
+  line-height: 1.4;
 }
 
 .form-wrapper label:first-of-type {
-  margin-top: 10px !important; /* 原为 25px */
+  margin-top: 8px !important;
 }
 
 label {
   font-weight: 600;
-  font-size: 14px;
+  font-size: 13.5px;
   display: block;
   color: #333;
-  margin: 25px 0 10px;
+  margin: 20px 0 6px;
 }
 
 /* ======== 输入框样式 ======== */
 input {
   width: 100%;
-  padding: 10px;
-  font-size: 14px;
-  margin-bottom: 25px;
+  padding: 8px;
+  font-size: 13.5px;
+  margin-bottom: 20px;
   border: 1px solid #ccc;
-  border-radius: 6px;
+  border-radius: 5px;
   background-color: #fafafa;
 }
 
@@ -179,10 +179,10 @@ input.error {
 }
 
 .size-hint {
-  font-size: 12px;
+  font-size: 11.5px;
   color: #e74c3c;
-  margin-top: -18px;
-  margin-bottom: 18px;
+  margin-top: -16px;
+  margin-bottom: 14px;
   padding-left: 2px;
 }
 
@@ -191,20 +191,20 @@ input.error {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 8px;
+  margin-bottom: 16px;
 }
 
 .option-btn {
-  flex: 1 1 calc(25% - 10px);
-  min-width: 120px;
-  padding: 10px 8px;
+  flex: 1 1 calc(25% - 8px);
+  min-width: 100px;
+  padding: 8px 6px;
   border: 1px solid #cbdafc;
   background: #f5f8ff;
   color: #333;
   cursor: pointer;
-  border-radius: 6px;
-  font-size: 14px;
+  border-radius: 5px;
+  font-size: 13px;
   transition: all 0.2s ease;
   text-align: center;
   white-space: nowrap;
@@ -230,13 +230,13 @@ input.error {
 #gh-devisBtn {
   width: 100%;
   background-color: #27ae60;
-  padding: 14px 20px;
-  font-size: 15px;
+  padding: 12px 18px;
+  font-size: 14px;
   font-weight: bold;
   border: none;
   cursor: pointer;
   color: white;
-  border-radius: 6px;
+  border-radius: 5px;
   transition: background 0.3s, transform 0.1s ease-in-out;
   position: relative;
 }
@@ -249,10 +249,10 @@ input.error {
 #gh-devisBtn.loading::after {
   content: "";
   position: absolute;
-  right: 20px;
+  right: 16px;
   top: 50%;
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   border: 2px solid white;
   border-top: 2px solid transparent;
   border-radius: 50%;
@@ -266,8 +266,8 @@ input.error {
 }
 
 #gh-result {
-  margin-top: 15px;
-  font-size: 16px;
+  margin-top: 12px;
+  font-size: 15px;
   color: #007BFF;
 }
 
@@ -276,26 +276,26 @@ footer {
   background: white;
   color: #666;
   text-align: center;
-  padding: 30px 20px;
-  margin-top: 60px;
-  font-size: 14px;
+  padding: 20px 16px;
+  margin-top: 40px;
+  font-size: 13.5px;
   border-top: 1px solid #e2e8f0;
 }
 
 footer a {
   color: #007bff;
   text-decoration: underline;
-  margin: 0 5px;
+  margin: 0 4px;
 }
 
 /* ======== 图像展示盒子 ======== */
 .preview-box {
   width: 100%;
-  max-width: 320px;
-  height: 280px;
-  margin-bottom: 20px;
+  max-width: 280px;
+  height: 240px;
+  margin-bottom: 16px;
   border: 2px solid #eee;
-  border-radius: 8px;
+  border-radius: 6px;
   background: white;
   display: flex;
   align-items: center;
@@ -303,8 +303,8 @@ footer a {
 }
 
 .preview-box img {
-  max-width: 90%;
-  max-height: 90%;
+  max-width: 88%;
+  max-height: 88%;
   object-fit: contain;
 }
 
@@ -313,32 +313,32 @@ footer a {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 24px; /* 原为 40px */
+  gap: 20px;
   flex-wrap: wrap;
-  margin-top: 20px; /* 原为 30px */
+  margin-top: 16px;
 }
 
 /* ======== 响应式调整 ======== */
 @media screen and (max-width: 600px) {
   .option-btn {
-    flex: 1 1 calc(50% - 10px);
+    flex: 1 1 calc(50% - 8px);
   }
 
   .hero h1 {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   nav a {
-    font-size: 13px;
-    margin: 0 8px;
+    font-size: 12.5px;
+    margin: 0 6px;
   }
 
   .logo {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   #devis-widget {
     flex-direction: column;
-    padding: 25px 20px;
+    padding: 20px 16px;
   }
 }
