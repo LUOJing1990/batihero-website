@@ -147,3 +147,47 @@ function updateOBButtonState() {
     btnOui.classList.remove('disabled');
   }
 }
+const typeSelect = document.getElementById('gh-type');
+const hintWidth = document.getElementById('hint-width');
+const hintHeight = document.getElementById('hint-height');
+
+// 尺寸限制规则（你可按实际修改）
+// 尺寸限制规则：每种窗户类型的推荐宽高范围（单位 mm）
+const sizeLimits = {
+  FIXED_WINDOW_PRICING:         { width: [400, 2000], height: [350, 2350] },
+  COULISSANT_PVC:               { width: [1000, 2600], height: [850, 2350] },
+  OB_1_VANTAIL_PVC:             { width: [500, 1400], height: [450, 1750] },
+  OF_1_VANTAIL_PVC:             { width: [500, 1000], height: [450, 2150] },
+  OF_2_VANTAUX_PVC:             { width: [700, 1600], height: [550, 2150] },
+  OF_3_VANTAUX_PVC:             { width: [1500, 2400], height: [550, 2150] },
+  OF_4_VANTAUX_PVC:             { width: [1800, 2800], height: [550, 2150] },
+  OF2_1_FIXE_PVC:               { width: [1500, 2400], height: [550, 2150] },
+  OF2_2_FIXES_PVC:              { width: [1800, 2800], height: [550, 2150] },
+  PORTE_1_VANTAIL_PVC:          { width: [900, 1100], height: [1950, 2350] },
+  PORTE_FENETRE_1_PVC:          { width: [700, 1000], height: [1950, 2350] },
+  PORTE_FENETRE_2_FIXE_1_PVC:   { width: [1700, 2700], height: [1950, 2350] },
+  PORTE_FENETRE_2_FIXE_2_PVC:   { width: [2000, 2800], height: [1950, 2350] },
+  PORTE_FENETRE_2_PVC:          { width: [1000, 1800], height: [1950, 2350] },
+  PORTE_FENETRE_3_PVC:          { width: [1700, 2700], height: [1950, 2350] },
+  PORTE_FENETRE_4_PVC:          { width: [2000, 2800], height: [1950, 2350] },
+  SOUFFLET_PVC:                 { width: [600, 1500], height: [450, 950] }
+};
+
+// 更新尺寸提示
+function updateSizeHint() {
+  const type = typeSelect.value;
+  if (sizeLimits[type]) {
+    const w = sizeLimits[type].width;
+    const h = sizeLimits[type].height;
+    hintWidth.textContent = `👉 Largeur recommandée : ${w[0]} mm — ${w[1]} mm`;
+    hintHeight.textContent = `👉 Hauteur recommandée : ${h[0]} mm — ${h[1]} mm`;
+  } else {
+    hintWidth.textContent = '';
+    hintHeight.textContent = '';
+  }
+}
+
+// 初始加载 & 下拉变化时更新
+typeSelect.addEventListener('change', updateSizeHint);
+window.addEventListener('DOMContentLoaded', updateSizeHint);
+
