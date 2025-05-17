@@ -1,34 +1,34 @@
-// 初始化配置对象
+// 初始化配置
 let config = {
   type: '',
   color: '',
   vitrage: '',
+  ob: '',
   width: 0,
-  height: 0,
-  ob: ''
+  height: 0
 };
 
-// 注册所有 option-btn 按钮行为
+// 注册所有 option-btn 的互斥逻辑
 document.querySelectorAll('.option-btn').forEach(btn => {
-  btn.addEventListener('click', function () {
-    const step = this.getAttribute('data-step');
-    const value = this.getAttribute('data-value');
+  btn.addEventListener('click', () => {
+    const step = btn.dataset.step;
+    const value = btn.dataset.value;
     config[step] = value;
 
-    // 激活按钮状态
-    document.querySelectorAll(`.option-btn[data-step="${step}"]`).forEach(b => b.classList.remove('active'));
-    this.classList.add('active');
+    // 激活当前按钮，取消同组其他按钮
+    document.querySelectorAll(`.option-btn[data-step="${step}"]`).forEach(b => {
+      b.classList.remove('active');
+    });
+    btn.classList.add('active');
 
-    // 更新尺寸提示
+    // 类型变化需要更新尺寸限制和 OB 可用性
     if (step === 'type') updateSizeHint();
-    if (step === 'type' || step === 'width' || step === 'height') updateOBButtonState();
+    if (['type', 'width', 'height'].includes(step)) updateOBButtonState();
   });
 });
 
-// 设置 API 接口地址
 const API_URL = 'https://80a67dd4-043a-437b-9b31-fec40991fe12-00-4rtgpz7r016u.worf.replit.dev/api/devis';
 
-// 绑定主按钮点击行为
 document.addEventListener('DOMContentLoaded', () => {
   const btn = document.getElementById('gh-devisBtn');
   const out = document.getElementById('gh-result');
@@ -36,18 +36,16 @@ document.addEventListener('DOMContentLoaded', () => {
   btn.addEventListener('click', async () => {
     const w = parseInt(document.getElementById('gh-width').value);
     const h = parseInt(document.getElementById('gh-height').value);
-    const type = config.type;
-    const color = config.color;
-    const vitrage = config.vitrage;
-    const ob = config.ob === 'oui';
 
     config.width = w;
     config.height = h;
 
-    // 重置错误状态
+    // 重置样式
     document.getElementById('gh-width').classList.remove('error');
     document.getElementById('gh-height').classList.remove('error');
+    out.textContent = '';
 
+    // 基础校验
     let hasError = false;
     if (!w || isNaN(w)) {
       document.getElementById('gh-width').classList.add('error');
@@ -57,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('gh-height').classList.add('error');
       hasError = true;
     }
-    if (!type || !color || !vitrage) {
+    if (!config.type || !config.color || !config.vitrage) {
       hasError = true;
     }
 
@@ -76,20 +74,18 @@ document.addEventListener('DOMContentLoaded', () => {
         body: JSON.stringify({
           largeur: w,
           hauteur: h,
-          type: type,
-          color: color,
-          vitrage: vitrage,
-          ob: ob
+          type: config.type,
+          color: config.color,
+          vitrage: config.vitrage,
+          ob: config.ob === 'oui'
         })
       });
 
-      if (!resp.ok) throw new Error(resp.statusText);
       const data = await resp.json();
-
       if (data.base_price) {
         out.innerHTML = `
           <div style="color:#007BFF">
-            ${type}<br>
+            ${config.type}<br>
             Taille : <strong>${data.matched_width}×${data.matched_height}</strong> mm<br>
             Prix : <strong>${data.base_price} € TTC</strong>
           </div>`;
@@ -97,17 +93,28 @@ document.addEventListener('DOMContentLoaded', () => {
         out.textContent = "Aucune correspondance pour cette taille.";
       }
     } catch (err) {
-      console.error('Devis fetch error:', err);
-      out.textContent = 'Erreur lors de la récupération du devis.';
+      console.error(err);
+      out.textContent = "Erreur lors de la récupération du devis.";
     } finally {
       btn.classList.remove("loading");
     }
+  });
+
+  document.getElementById('gh-width').addEventListener('input', () => {
+    config.width = parseInt(document.getElementById('gh-width').value);
+    updateOBButtonState();
+  });
+
+  document.getElementById('gh-height').addEventListener('input', () => {
+    config.height = parseInt(document.getElementById('gh-height').value);
+    updateOBButtonState();
   });
 
   updateSizeHint();
   updateOBButtonState();
 });
 
+// 尺寸推荐表
 const sizeLimits = {
   FIXED_WINDOW_PRICING:         { width: [400, 2000], height: [350, 2350] },
   COULISSANT_PVC:               { width: [1000, 2600], height: [850, 2350] },
@@ -128,58 +135,50 @@ const sizeLimits = {
   SOUFFLET_PVC:                 { width: [600, 1500], height: [450, 950] }
 };
 
-// 显示尺寸范围提示
+// 尺寸提示更新
 function updateSizeHint() {
   const type = config.type;
-  const hintWidth = document.getElementById('hint-width');
-  const hintHeight = document.getElementById('hint-height');
-
-  if (sizeLimits[type]) {
-    const w = sizeLimits[type].width;
-    const h = sizeLimits[type].height;
-    hintWidth.textContent = `👉 Largeur recommandée : ${w[0]} mm — ${w[1]} mm`;
-    hintHeight.textContent = `👉 Hauteur recommandée : ${h[0]} mm — ${h[1]} mm`;
-  } else {
-    hintWidth.textContent = '';
-    hintHeight.textContent = '';
+  const hintW = document.getElementById('hint-width');
+  const hintH = document.getElementById('hint-height');
+  if (!type || !sizeLimits[type]) {
+    hintW.textContent = '';
+    hintH.textContent = '';
+    return;
   }
+
+  const w = sizeLimits[type].width;
+  const h = sizeLimits[type].height;
+  hintW.textContent = `👉 Largeur recommandée : ${w[0]} mm — ${w[1]} mm`;
+  hintH.textContent = `👉 Hauteur recommandée : ${h[0]} mm — ${h[1]} mm`;
 }
 
-// OB 开关控制
+// OB 可用性判断
 function updateOBButtonState() {
   const type = config.type;
   const w = config.width;
   const h = config.height;
-  const btnOui = document.getElementById('btn-ob-oui');
 
-  const forbiddenTypes = [
-    'FIXED_WINDOW_PRICING',
-    'COULISSANT_PVC',
-    'PORTE_1_VANTAIL_PVC',
-    'OB_1_VANTAIL_PVC',
+  const btnOui = document.querySelector('.option-btn[data-step="ob"][data-value="oui"]');
+
+  const forbidden = [
+    'FIXED_WINDOW_PRICING', 'COULISSANT_PVC',
+    'PORTE_1_VANTAIL_PVC', 'OB_1_VANTAIL_PVC',
     'SOUFFLET_PVC'
   ];
 
-  if (forbiddenTypes.includes(type)) {
-    btnOui.disabled = true;
+  if (forbidden.includes(type) || !type || isNaN(w) || isNaN(h)) {
     btnOui.classList.add('disabled');
+    btnOui.disabled = true;
     return;
   }
 
-  if (!type || isNaN(w) || isNaN(h)) {
-    btnOui.disabled = false;
-    btnOui.classList.remove('disabled');
-    return;
-  }
-
-  let widthPerLeaf = w;
-  if (type.includes('2')) widthPerLeaf = w / 2;
-
-  if (widthPerLeaf > 800 || h > 2000) {
-    btnOui.disabled = true;
+  const leafWidth = type.includes('2') ? w / 2 : w;
+  if (leafWidth > 800 || h > 2000) {
     btnOui.classList.add('disabled');
+    btnOui.disabled = true;
   } else {
-    btnOui.disabled = false;
     btnOui.classList.remove('disabled');
+    btnOui.disabled = false;
   }
 }
+
