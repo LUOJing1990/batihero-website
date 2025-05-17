@@ -41,6 +41,10 @@ function setActiveBtnGroup(step, value) {
   config[step] = value;
 
   if (step === 'type') updateSizeHint();
+  if (step === 'type') {
+  updateSizeHint();
+  updateFenetreImage(value);
+}
   if (['type', 'width', 'height'].includes(step)) updateOBButtonState();
 }
 
@@ -174,3 +178,32 @@ document.addEventListener('DOMContentLoaded', () => {
   updateSizeHint();
   updateOBButtonState();
 });
+function updateFenetreImage(type) {
+  const imgEl = document.getElementById('preview-img');
+  const imageMap = {
+    FIXED_WINDOW_PRICING: 'images/fenetre_fixe.png',
+    COULISSANT_PVC: 'images/coulissant.png',
+    OB_1_VANTAIL_PVC: 'images/ob_1.png',
+    OF_1_VANTAIL_PVC: 'images/of_1.png',
+    OF_2_VANTAUX_PVC: 'images/of_2.png',
+    OF_3_VANTAUX_PVC: 'images/of_3.png',
+    OF_4_VANTAUX_PVC: 'images/of_4.png',
+    OF2_1_FIXE_PVC: 'images/of2_1.png',
+    OF2_2_FIXES_PVC: 'images/of2_2.png',
+    PORTE_1_VANTAIL_PVC: 'images/porte_1.png',
+    PORTE_FENETRE_1_PVC: 'images/porte_fenetre_1.png',
+    PORTE_FENETRE_2_FIXE_1_PVC: 'images/pf_2_f1.png',
+    PORTE_FENETRE_2_FIXE_2_PVC: 'images/pf_2_f2.png',
+    PORTE_FENETRE_2_PVC: 'images/pf_2.png',
+    PORTE_FENETRE_3_PVC: 'images/pf_3.png',
+    PORTE_FENETRE_4_PVC: 'images/pf_4.png',
+    SOUFFLET_PVC: 'images/soufflet.png'
+  };
+
+  if (imageMap[type]) {
+    imgEl.src = imageMap[type];
+    imgEl.style.display = 'block';
+  } else {
+    imgEl.style.display = 'none';
+  }
+}
