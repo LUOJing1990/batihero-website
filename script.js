@@ -100,7 +100,7 @@ function updateOBButtonState() {
   toggleOBDisabled(leafWidth > 800 || h > 2000);
 }
 
-// 按钮激活处理
+// 按钮激活 + 类型联动处理
 function setActiveBtnGroup(step, value) {
   document.querySelectorAll(`.option-btn[data-step="${step}"]`).forEach(btn => {
     btn.classList.remove('active');
@@ -116,15 +116,9 @@ function setActiveBtnGroup(step, value) {
   if (['type', 'width', 'height'].includes(step)) updateOBButtonState();
 }
 
-// 页面加载后绑定逻辑
+// 页面初始化与交互绑定
 document.addEventListener('DOMContentLoaded', () => {
-  const out = document.getElementById('gh-result');
-  const cta = document.getElementById('cta-after-result');
-  const btn = document.getElementById('gh-devisBtn');
-
-  out.textContent = "Remplissez les options ci-dessus pour obtenir votre devis.";
-
-  // 选项按钮绑定
+  // 所有选项按钮点击绑定
   document.querySelectorAll('.option-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const step = btn.dataset.step;
@@ -142,15 +136,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 获取报价按钮点击事件
+  // 获取报价按钮点击
+  const btn = document.getElementById('gh-devisBtn');
+  const out = document.getElementById('gh-result');
   btn.addEventListener('click', async () => {
     const w = Number(document.getElementById('gh-width').value);
     const h = Number(document.getElementById('gh-height').value);
     config.width = w;
     config.height = h;
 
+    // 清除错误状态
     out.textContent = '';
-    cta.style.display = 'none';
     ['gh-width', 'gh-height'].forEach(id => document.getElementById(id).classList.remove('error'));
 
     let hasError = false;
@@ -171,9 +167,8 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    btn.disabled = true;
     btn.classList.add("loading");
-    out.textContent = "⏳ Calcul du prix en cours...";
+    out.textContent = "Chargement du devis...";
 
     try {
       const resp = await fetch('https://80a67dd4-043a-437b-9b31-fec40991fe12-00-4rtgpz7r016u.worf.replit.dev/api/devis', {
@@ -188,31 +183,26 @@ document.addEventListener('DOMContentLoaded', () => {
           ob: config.ob === 'oui'
         })
       });
-
       const data = await resp.json();
-
       if (data.base_price) {
         out.innerHTML = `
-          <div style="color:#007BFF; font-size:16px;">
-            ✅ <strong>Prix estimé</strong> : ${data.base_price} € TTC<br>
-            📏 Dimensions : ${data.matched_width} × ${data.matched_height} mm<br>
-            📦 Type : ${config.type.replace(/_/g, ' ')}
+          <div style="color:#007BFF">
+            ${config.type}<br>
+            Taille : <strong>${data.matched_width}×${data.matched_height}</strong> mm<br>
+            Prix : <strong>${data.base_price} € TTC</strong>
           </div>`;
-        cta.style.display = 'block';
       } else {
         out.textContent = "Aucune correspondance pour cette taille.";
       }
     } catch (err) {
-      console.error('Erreur de requête:', err);
+      console.error('Fetch error:', err);
       out.textContent = "Erreur lors de la récupération du devis.";
     } finally {
-      btn.disabled = false;
       btn.classList.remove("loading");
     }
   });
 
-  // 初始加载行为
+  // 初始显示
   updateSizeHint();
   updateOBButtonState();
 });
-
