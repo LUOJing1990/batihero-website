@@ -29,7 +29,59 @@ const sizeLimits = {
   SOUFFLET_PVC:                 { width: [600, 1500], height: [450, 950] }
 };
 
-// 图像路径绑定表
+// 接口地址
+const API_URL = 'https://80a67dd4-043a-437b-9b31-fec40991fe12-00-4rtgpz7r016u.worf.replit.dev/api/devis';
+
+function setActiveBtnGroup(step, value) {
+  document.querySelectorAll(`.option-btn[data-step="${step}"]`).forEach(btn => {
+    btn.classList.remove('active');
+    if (btn.dataset.value === value) btn.classList.add('active');
+  });
+  config[step] = value;
+  if (step === 'type') {
+    updateSizeHint();
+    updateFenetreImage(value);
+  }
+  if (["type", "width", "height"].includes(step)) updateOBButtonState();
+}
+
+function toggleOBDisabled(disabled) {
+  const btn = document.querySelector('.option-btn[data-step="ob"][data-value="oui"]');
+  if (!btn) return;
+  btn.disabled = disabled;
+  btn.classList.toggle('disabled', disabled);
+}
+
+function updateSizeHint() {
+  const type = config.type;
+  const hintW = document.getElementById('hint-width');
+  const hintH = document.getElementById('hint-height');
+  if (!type || !sizeLimits[type]) {
+    hintW.textContent = '';
+    hintH.textContent = '';
+    return;
+  }
+  const range = sizeLimits[type];
+  hintW.textContent = `👉 Largeur recommandée : ${range.width[0]} mm — ${range.width[1]} mm`;
+  hintH.textContent = `👉 Hauteur recommandée : ${range.height[0]} mm — ${range.height[1]} mm`;
+}
+
+function updateOBButtonState() {
+  const type = config.type;
+  const w = config.width;
+  const h = config.height;
+  const notAllowed = [
+    'FIXED_WINDOW_PRICING', 'COULISSANT_PVC', 'PORTE_1_VANTAIL_PVC',
+    'OB_1_VANTAIL_PVC', 'SOUFFLET_PVC'
+  ];
+  if (!type || isNaN(w) || isNaN(h) || notAllowed.includes(type)) {
+    toggleOBDisabled(true);
+    return;
+  }
+  const leafWidth = type.includes('2') ? w / 2 : w;
+  toggleOBDisabled(leafWidth > 800 || h > 2000);
+}
+
 function updateFenetreImage(type) {
   const imgEl = document.getElementById('preview-img');
   const imageMap = {
@@ -51,7 +103,6 @@ function updateFenetreImage(type) {
     PORTE_FENETRE_4_PVC: 'images/pf_4.png',
     SOUFFLET_PVC: 'images/soufflet.png'
   };
-
   if (imageMap[type]) {
     imgEl.src = imageMap[type];
     imgEl.style.display = 'block';
@@ -60,65 +111,7 @@ function updateFenetreImage(type) {
   }
 }
 
-// OB 按钮启用/禁用逻辑
-function toggleOBDisabled(disabled) {
-  const btn = document.querySelector('.option-btn[data-step="ob"][data-value="oui"]');
-  if (!btn) return;
-  btn.disabled = disabled;
-  btn.classList.toggle('disabled', disabled);
-}
-
-// 尺寸提示更新
-function updateSizeHint() {
-  const type = config.type;
-  const hintW = document.getElementById('hint-width');
-  const hintH = document.getElementById('hint-height');
-  if (!type || !sizeLimits[type]) {
-    hintW.textContent = '';
-    hintH.textContent = '';
-    return;
-  }
-  const range = sizeLimits[type];
-  hintW.textContent = `👉 Largeur recommandée : ${range.width[0]} mm — ${range.width[1]} mm`;
-  hintH.textContent = `👉 Hauteur recommandée : ${range.height[0]} mm — ${range.height[1]} mm`;
-}
-
-// OB 条件判断逻辑
-function updateOBButtonState() {
-  const type = config.type;
-  const w = config.width;
-  const h = config.height;
-
-  const notAllowed = ['FIXED_WINDOW_PRICING', 'COULISSANT_PVC', 'PORTE_1_VANTAIL_PVC', 'OB_1_VANTAIL_PVC', 'SOUFFLET_PVC'];
-
-  if (!type || isNaN(w) || isNaN(h) || notAllowed.includes(type)) {
-    toggleOBDisabled(true);
-    return;
-  }
-
-  const leafWidth = type.includes('2') ? w / 2 : w;
-  toggleOBDisabled(leafWidth > 800 || h > 2000);
-}
-
-// 按钮激活 + 类型联动处理
-function setActiveBtnGroup(step, value) {
-  document.querySelectorAll(`.option-btn[data-step="${step}"]`).forEach(btn => {
-    btn.classList.remove('active');
-    if (btn.dataset.value === value) btn.classList.add('active');
-  });
-  config[step] = value;
-
-  if (step === 'type') {
-    updateSizeHint();
-    updateFenetreImage(value);
-  }
-
-  if (['type', 'width', 'height'].includes(step)) updateOBButtonState();
-}
-
-// 页面初始化与交互绑定
 document.addEventListener('DOMContentLoaded', () => {
-  // 所有选项按钮点击绑定
   document.querySelectorAll('.option-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const step = btn.dataset.step;
@@ -127,7 +120,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 尺寸输入绑定
   ['gh-width', 'gh-height'].forEach(id => {
     document.getElementById(id).addEventListener('input', () => {
       config.width = Number(document.getElementById('gh-width').value);
@@ -136,7 +128,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 获取报价按钮点击
   const btn = document.getElementById('gh-devisBtn');
   const out = document.getElementById('gh-result');
   btn.addEventListener('click', async () => {
@@ -145,7 +136,6 @@ document.addEventListener('DOMContentLoaded', () => {
     config.width = w;
     config.height = h;
 
-    // 清除错误状态
     out.textContent = '';
     ['gh-width', 'gh-height'].forEach(id => document.getElementById(id).classList.remove('error'));
 
@@ -171,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
     out.textContent = "Chargement du devis...";
 
     try {
-      const resp = await fetch('https://80a67dd4-043a-437b-9b31-fec40991fe12-00-4rtgpz7r016u.worf.replit.dev/api/devis', {
+      const resp = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -202,7 +192,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 初始显示
   updateSizeHint();
   updateOBButtonState();
 });
