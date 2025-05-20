@@ -365,17 +365,19 @@ footer a {
 }
 /* ======== 响应式按钮自适应文字显示 ======== */
 .option-btn {
-  white-space: normal;        /* 允许换行 */
-  text-align: center;         /* 居中对齐 */
-  line-height: 1.3;           /* 提升两行文字可读性 */
+  white-space: normal;     /* ✅ 自动换行 */
+  word-break: break-word;  /* ✅ 强制长词断行 */
+  text-align: center;
+  line-height: 1.3;
 }
 
-/* 移动端优化（小屏幕） */
+/* 针对小屏设备进一步优化按钮大小 */
 @media screen and (max-width: 600px) {
   .option-btn {
-    font-size: 12px;          /* 缩小字体 */
-    padding: 8px 6px;         /* 缩小按钮间距 */
-    line-height: 1.2;
+    font-size: 13px;       /* 🔹 字体小一点 */
+    padding: 8px 6px;
+    flex: 1 1 calc(50% - 10px);  /* 保持两列 */
   }
 }
+
 
