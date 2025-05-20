@@ -2,55 +2,14 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>BatiHero — Devis fenêtres & installation</title>
+  <title>BatiHero — Estimation fenêtres immédiate</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="stylesheet" href="style.css">
-  <style>
-    .widget-flex {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 40px;
-      flex-wrap: wrap;
-      margin-top: 30px;
-    }
-
-    .preview-box {
-      width: 280px;
-      height: 280px;
-      border: 2px solid #eee;
-      border-radius: 10px;
-      background: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .preview-box img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-    }
-
-    .form-wrapper {
-      max-width: 720px;
-    }
-
-    @media screen and (max-width: 768px) {
-      .widget-flex {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .preview-box {
-        margin-bottom: 20px;
-      }
-    }
-  </style>
 </head>
 <body>
 
+<!-- ========== HEADER ========== -->
 <header>
   <div class="logo">BatiHero</div>
   <nav>
@@ -60,32 +19,39 @@
   </nav>
 </header>
 
+<!-- ========== HERO SECTION ========== -->
 <section class="hero">
-  <h1>Obtenez rapidement un devis fenêtres<br>avec installation garantie</h1>
-  <p>Un devis clair, juste et immédiat.</p>
+  <h1>Estimez gratuitement votre fenêtre<br>avec installation possible</h1>
+  <p>Un devis indicatif, clair et immédiat — sans engagement.</p>
   <div class="hero-buttons">
     <a href="#devis-widget" class="btn btn-green">Je suis propriétaire — Obtenir un devis</a>
     <a href="#" class="btn btn-blue">Je suis installateur — Commander rapidement</a>
   </div>
 </section>
 
+<!-- ========== SIMULATEUR DEVIS ========== -->
 <section id="devis-widget">
   <h2>Estimez le prix de votre fenêtre en 1 minute</h2>
   <p class="form-subtitle">Remplissez les champs ci-dessous pour obtenir une estimation immédiate.</p>
 
+  <!-- === 过程说明条 === -->
   <div class="form-reminder">
     📌 <strong>Étapes :</strong> 1. Type → 2. Dimensions → 3. Couleur → 4. Vitrage → 5. OB (optionnel)
   </div>
 
   <div class="widget-flex">
+    <!-- === 预览图片区域 === -->
     <div class="preview-box">
-      <img id="preview-img" src="" alt="Aperçu fenêtre" style="display: none;" />
+      <img id="preview-img" src="images/fenetre_fixe.png" alt="Aperçu fenêtre" />
     </div>
 
+    <!-- === 表单主区域 === -->
     <div class="form-wrapper">
+
+      <!-- === 窗型选择 === -->
       <label>Type de fenêtre :</label>
       <div class="option-group">
-        <button class="option-btn" data-step="type" data-value="FIXED_WINDOW_PRICING">Fenêtre fixe</button>
+        <button class="option-btn active" data-step="type" data-value="FIXED_WINDOW_PRICING">Fenêtre fixe</button>
         <button class="option-btn" data-step="type" data-value="COULISSANT_PVC">Coulissant</button>
         <button class="option-btn" data-step="type" data-value="OB_1_VANTAIL_PVC">OB 1 vantail</button>
         <button class="option-btn" data-step="type" data-value="OF_1_VANTAIL_PVC">OF 1 vantail</button>
@@ -104,6 +70,7 @@
         <button class="option-btn" data-step="type" data-value="SOUFFLET_PVC">Soufflet</button>
       </div>
 
+      <!-- === 尺寸输入 === -->
       <label for="gh-width">Largeur (mm) :</label>
       <input id="gh-width" type="number" placeholder="ex. 1250">
       <div class="size-hint" id="hint-width"></div>
@@ -112,6 +79,7 @@
       <input id="gh-height" type="number" placeholder="ex. 1451">
       <div class="size-hint" id="hint-height"></div>
 
+      <!-- === 颜色选择 === -->
       <label>Couleur :</label>
       <div class="option-group">
         <button class="option-btn" data-step="color" data-value="blanc">Blanc</button>
@@ -119,6 +87,7 @@
         <button class="option-btn" data-step="color" data-value="couleur">Couleur deux faces</button>
       </div>
 
+      <!-- === 玻璃类型选择 === -->
       <label>Type de vitrage :</label>
       <div class="option-group">
         <button class="option-btn" data-step="vitrage" data-value="4-20-4">4-20-4</button>
@@ -127,18 +96,29 @@
         <button class="option-btn" data-step="vitrage" data-value="44.2opale-16-4">44.2 opale - 16-4</button>
       </div>
 
+      <!-- === OB 选择 === -->
       <label>Système OB :</label>
       <div class="option-group">
         <button type="button" class="option-btn" id="btn-ob-oui" data-step="ob" data-value="oui">Oui</button>
         <button type="button" class="option-btn" data-step="ob" data-value="non">Non</button>
       </div>
 
-      <button id="gh-devisBtn">Obtenir le prix</button>
+      <!-- === 获取报价按钮 === -->
+      <button id="gh-devisBtn">🎯 Calculer mon prix maintenant</button>
+
+      <!-- === 理性信任提示 === -->
+      <p class="trust-message">
+        🔍 Simulation à titre indicatif — Sans engagement.<br>
+        Vos données ne sont ni enregistrées, ni partagées.
+      </p>
+
+      <!-- === 结果显示区 === -->
       <div id="gh-result"></div>
     </div>
   </div>
 </section>
 
+<!-- ========== FOOTER ========== -->
 <footer>
   <p>© 2025 BatiHero. Tous droits réservés.</p>
   <p><a href="#">Mentions légales</a> | <a href="#">CGV</a></p>
