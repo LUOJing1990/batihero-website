@@ -211,9 +211,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       <div class="quick-feedback">
       <p>💬 Ce prix vous paraît utile ?</p>
-      <button class="feedback-btn" onclick="alert('Merci pour votre retour 🙏')">👍 Oui</button>
-      <button class="feedback-btn" onclick="window.location.href='https://wa.me/33xxxxxxxxx'">❓ Je préfère en parler</button>
+      <button class="feedback-btn" onclick="openModal('oui')">👍 Oui</button>
+      <button class="feedback-btn" onclick="openModal('parler')">❓ Je préfère en parler</button>
       </div>
+
 
       <p class="price-note">💡 Montant indicatif basé sur vos choix. Livraison et pose non inclus.</p>
       </div>`;
@@ -229,3 +230,39 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+function openModal(feedbackType) {
+  document.getElementById('feedback-modal').style.display = 'flex';
+  window.currentFeedbackType = feedbackType; // 'oui' 或 'parler'
+}
+
+function closeModal() {
+  document.getElementById('feedback-modal').style.display = 'none';
+}
+
+async function submitFeedback() {
+  const text = document.getElementById('feedback-text').value.trim();
+  if (!text) {
+    alert("Merci de remplir le message 🙏");
+    return;
+  }
+
+  const payload = {
+    feedback_type: window.currentFeedbackType,
+    message: text,
+    timestamp: new Date().toISOString()
+  };
+
+  try {
+    await fetch("https://script.google.com/macros/s/AKfycbxqteOlMMRaQHSk6NHAUW8XfcVVC-ICzP4pF0sN5cZoMk9gk4ucDPTYhEh2SxU1fZxf/exec", {
+      method: 'POST',
+      mode: 'no-cors', // 保证不会 CORS 阻断
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    alert("Merci pour votre retour !");
+    document.getElementById('feedback-text').value = '';
+    closeModal();
+  } catch (err) {
+    alert("Erreur lors de l’envoi du message.");
+  }
+}
