@@ -60,7 +60,6 @@ function updateFenetreImage(type) {
   }
 }
 
-// OB 按钮启用/禁用逻辑
 function toggleOBDisabled(disabled) {
   const btn = document.querySelector('.option-btn[data-step="ob"][data-value="oui"]');
   if (!btn) return;
@@ -68,7 +67,6 @@ function toggleOBDisabled(disabled) {
   btn.classList.toggle('disabled', disabled);
 }
 
-// 尺寸提示更新
 function updateSizeHint() {
   const type = config.type;
   const hintW = document.getElementById('hint-width');
@@ -83,45 +81,34 @@ function updateSizeHint() {
   hintH.textContent = `👉 Hauteur recommandée : ${range.height[0]} mm — ${range.height[1]} mm`;
 }
 
-// OB 条件判断逻辑
 function updateOBButtonState() {
   const type = config.type;
   const w = config.width;
   const h = config.height;
-
   const notAllowed = ['FIXED_WINDOW_PRICING', 'COULISSANT_PVC', 'PORTE_1_VANTAIL_PVC', 'OB_1_VANTAIL_PVC', 'SOUFFLET_PVC'];
-
   if (!type || isNaN(w) || isNaN(h) || notAllowed.includes(type)) {
     toggleOBDisabled(true);
     return;
   }
-
   const leafWidth = type.includes('2') ? w / 2 : w;
   toggleOBDisabled(leafWidth > 800 || h > 2000);
 }
 
-// 按钮激活 + 类型联动处理
 function setActiveBtnGroup(step, value) {
   document.querySelectorAll(`.option-btn[data-step="${step}"]`).forEach(btn => {
     btn.classList.remove('active');
     if (btn.dataset.value === value) btn.classList.add('active');
   });
   config[step] = value;
-
   if (step === 'type') {
     updateSizeHint();
     updateFenetreImage(value);
   }
-
   if (['type', 'width', 'height'].includes(step)) updateOBButtonState();
 }
 
-// 页面初始化与交互绑定
 document.addEventListener('DOMContentLoaded', () => {
-  // 默认激活初始窗型，显示尺寸提示和图像
   setActiveBtnGroup('type', 'FIXED_WINDOW_PRICING');
-
-  // 所有选项按钮点击绑定
   document.querySelectorAll('.option-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const step = btn.dataset.step;
@@ -129,8 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
       setActiveBtnGroup(step, value);
     });
   });
-
-  // 尺寸输入绑定
   ['gh-width', 'gh-height'].forEach(id => {
     document.getElementById(id).addEventListener('input', () => {
       config.width = Number(document.getElementById('gh-width').value);
@@ -139,7 +124,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 获取报价按钮点击
   const btn = document.getElementById('gh-devisBtn');
   const out = document.getElementById('gh-result');
   btn.addEventListener('click', async () => {
@@ -148,7 +132,6 @@ document.addEventListener('DOMContentLoaded', () => {
     config.width = w;
     config.height = h;
 
-    // 清除错误状态
     out.textContent = '';
     ['gh-width', 'gh-height'].forEach(id => document.getElementById(id).classList.remove('error'));
 
@@ -164,7 +147,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!config.type || !config.color || !config.vitrage) {
       hasError = true;
     }
-
     if (hasError) {
       out.textContent = "Veuillez remplir tous les champs obligatoires.";
       return;
@@ -189,10 +171,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const data = await resp.json();
       if (data.base_price) {
         out.innerHTML = `
-          <div style="color:#007BFF">
-            ${config.type}<br>
-            Taille : <strong>${data.matched_width}×${data.matched_height}</strong> mm<br>
-            Prix : <strong>${data.base_price} € TTC</strong>
+          <div class="price-card">
+            <h3>✅ Résumé de votre demande</h3>
+            <p><strong>Type :</strong> ${config.type}</p>
+            <p><strong>Dimensions :</strong> ${w} mm × ${h} mm</p>
+            <p><strong>Couleur :</strong> ${config.color}</p>
+            <p><strong>Vitrage :</strong> ${config.vitrage}</p>
+            <p><strong>OB :</strong> ${config.ob}</p>
+            <p class="highlight-price"><strong>Total estimé :</strong> ${data.base_price} € HT</p>
           </div>`;
       } else {
         out.textContent = "Aucune correspondance pour cette taille.";
