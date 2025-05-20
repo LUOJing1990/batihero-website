@@ -253,9 +253,8 @@ async function submitFeedback() {
   };
 
   try {
-    await fetch("https://script.google.com/macros/s/AKfycbxqteOlMMRaQHSk6NHAUW8XfcVVC-ICzP4pF0sN5cZoMk9gk4ucDPTYhEh2SxU1fZxf/exec", {
+    await fetch("https://80a67dd4-043a-437b-9b31-fec40991fe12-00-4rtgpz7r016u.worf.replit.dev/api/feedback", {
       method: 'POST',
-      mode: 'no-cors', // 保证不会 CORS 阻断
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     });
@@ -266,3 +265,4 @@ async function submitFeedback() {
     alert("Erreur lors de l’envoi du message.");
   }
 }
+
