@@ -118,6 +118,9 @@ function setActiveBtnGroup(step, value) {
 
 // 页面初始化与交互绑定
 document.addEventListener('DOMContentLoaded', () => {
+  // 默认激活初始窗型，显示尺寸提示和图像
+  setActiveBtnGroup('type', 'FIXED_WINDOW_PRICING');
+
   // 所有选项按钮点击绑定
   document.querySelectorAll('.option-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -201,8 +204,4 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.classList.remove("loading");
     }
   });
-
-  // 初始显示
-  updateSizeHint();
-  updateOBButtonState();
 });
