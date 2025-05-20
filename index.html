@@ -7,16 +7,43 @@
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="stylesheet" href="style.css">
   <style>
+    /* ========== 优化样式：段落间距与紧凑结构 ========== */
+    .form-intro {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
     .form-reminder {
-      margin-top: 4px;
-      margin-bottom: 4px;
+      margin: 0;
+      font-size: 13.5px;
+      color: #333;
     }
     .form-subtitle {
-      margin-top: 0;
-      margin-bottom: 8px;
+      margin: 0;
+      font-size: 13px;
+      color: #555;
     }
     .preview-box {
-      margin-top: 0;
+      margin: 0 auto;
+      max-height: 180px;
+    }
+    .option-group {
+      margin-bottom: 10px;
+    }
+    .option-btn {
+      font-size: 15px;
+    }
+    .trust-message {
+      font-size: 12px;
+      color: #888;
+      text-align: center;
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+    .form-wrapper input {
+      margin-bottom: 15px;
     }
   </style>
 </head>
@@ -45,18 +72,19 @@
 <!-- ========== SIMULATEUR DEVIS ========== -->
 <section id="devis-widget">
   <h2>Estimez le prix de votre fenêtre en 1 minute</h2>
-  <!-- 将小字移到下方 -->
-  <div class="form-reminder">
-    📌 <strong>Étapes :</strong> 1. Type → 2. Dimensions → 3. Couleur → 4. Vitrage → 5. OB (optionnel)
-  </div>
-  <p class="form-subtitle">Remplissez les champs ci-dessous pour obtenir une estimation immédiate.</p>
 
-  <div class="widget-flex">
-    <!-- === 居中预览图片区域 === -->
-    <div class="preview-box" style="margin: 0 auto;">
+  <!-- === 结构化提示区域 === -->
+  <div class="form-intro">
+    <div class="form-reminder">
+      📌 <strong>Étapes :</strong> 1. Type → 2. Dimensions → 3. Couleur → 4. Vitrage → 5. OB (optionnel)
+    </div>
+    <p class="form-subtitle">Remplissez les champs ci-dessous pour obtenir une estimation immédiate.</p>
+    <div class="preview-box">
       <img id="preview-img" src="images/fenetre_fixe.png" alt="Aperçu fenêtre" />
     </div>
+  </div>
 
+  <div class="widget-flex">
     <!-- === 表单主区域 === -->
     <div class="form-wrapper">
 
@@ -84,11 +112,11 @@
 
       <!-- === 尺寸输入 === -->
       <label for="gh-width">Largeur (mm) :</label>
-      <input id="gh-width" type="number" placeholder="ex. 1250">
+      <input id="gh-width" type="number" placeholder="Largeur (mm) – ex. 1250">
       <div class="size-hint" id="hint-width"></div>
 
       <label for="gh-height">Hauteur (mm) :</label>
-      <input id="gh-height" type="number" placeholder="ex. 1451">
+      <input id="gh-height" type="number" placeholder="Hauteur (mm) – ex. 1451">
       <div class="size-hint" id="hint-height"></div>
 
       <!-- === 颜色选择 === -->
