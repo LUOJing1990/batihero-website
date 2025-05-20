@@ -199,16 +199,25 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       const data = await resp.json();
       if (data.base_price) {
-        out.innerHTML = `
-          <div class="price-card">
-            <h3>✅ Résumé de votre demande</h3>
-            <p><strong>Type :</strong> ${config.type}</p>
-            <p><strong>Dimensions :</strong> ${w} mm × ${h} mm</p>
-            <p><strong>Couleur :</strong> ${config.color}</p>
-            <p><strong>Vitrage :</strong> ${config.vitrage}</p>
-            <p><strong>OB :</strong> ${config.ob}</p>
-            <p class="highlight-price"><strong>Total estimé :</strong> ${data.base_price} € HT</p>
-          </div>`;
+      out.innerHTML = `
+      <div class="price-card">
+      <h3>✅ Résumé de votre demande</h3>
+      <p><strong>Type :</strong> ${config.type}</p>
+      <p><strong>Dimensions :</strong> ${w} mm × ${h} mm</p>
+      <p><strong>Couleur :</strong> ${config.color}</p>
+      <p><strong>Vitrage :</strong> ${config.vitrage}</p>
+      <p><strong>OB :</strong> ${config.ob}</p>
+      <p class="highlight-price"><strong>Total estimé :</strong> ${data.base_price} € HT</p>
+
+      <div class="quick-feedback">
+      <p>💬 Ce prix vous paraît utile ?</p>
+      <button class="feedback-btn" onclick="alert('Merci pour votre retour 🙏')">👍 Oui</button>
+      <button class="feedback-btn" onclick="window.location.href='https://wa.me/33xxxxxxxxx'">❓ Je préfère en parler</button>
+      </div>
+
+      <p class="price-note">💡 Montant indicatif basé sur vos choix. Livraison et pose non inclus.</p>
+      </div>`;
+
       } else {
         out.textContent = "Aucune correspondance pour cette taille.";
       }
