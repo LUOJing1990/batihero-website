@@ -168,5 +168,15 @@
 </footer>
 
 <script src="script.js"></script>
+  <div id="feedback-modal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">×</span>
+    <h3>📝 Votre retour est précieux</h3>
+    <p>Partagez une idée, une remarque ou une amélioration souhaitée :</p>
+    <textarea id="feedback-text" placeholder="Votre message..." rows="4"></textarea>
+    <button onclick="submitFeedback()">Envoyer</button>
+  </div>
+</div>
+
 </body>
 </html>
