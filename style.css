@@ -355,10 +355,12 @@ footer a {
   }
 }
 .preview-caption {
-  font-size: 13.5px;
+  font-size: 13px;
   color: #555;
   margin-top: 8px;
   text-align: center;
-  max-width: 260px;
-  line-height: 1.4;
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
 }
+
