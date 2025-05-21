@@ -2,17 +2,16 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>BatiHero — Estimation fenêtres immédiate</title>
+  <title>Devis fenêtres PVC en ligne – BatiHero</title>
+  <meta name="description" content="Obtenez une estimation immédiate et gratuite pour vos fenêtres PVC sur mesure. BatiHero simplifie vos projets de rénovation.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/png" href="images/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
   <link rel="shortcut icon" href="images/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png" />
   <link rel="manifest" href="images/site.webmanifest" />
-
   <link rel="stylesheet" href="style.css">
   <style>
-    /* ========== 优化样式：段落间距与紧凑结构 ========== */
     .form-intro {
       display: flex;
       flex-direction: column;
@@ -53,8 +52,6 @@
   </style>
   <!-- Cloudflare Web Analytics -->
   <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "171d42da02bd41bdb815b32d87de1549"}'></script>
-  <!-- End Cloudflare Web Analytics -->
-
 </head>
 <body>
 
@@ -82,47 +79,44 @@
 <section id="devis-widget">
   <h2>Estimez le prix de votre fenêtre PVC en 1 minute</h2>
 
-  <!-- === 结构化提示区域 === -->
   <div class="form-intro">
     <div class="form-reminder">
       📌 <strong>Étapes :</strong> 1. Type → 2. Dimensions → 3. Couleur → 4. Vitrage → 5. OB (optionnel)
     </div>
     <p class="form-subtitle">Remplissez les champs ci-dessous pour obtenir une estimation immédiate.</p>
     
-  <div class="preview-box">
-  <img id="preview-img" src="images/fenetre_fixe.png" alt="Aperçu fenêtre" />
-  </div>
-  <p id="preview-caption" class="preview-caption">Fenêtre fixe (non ouvrante) — Simple et lumineuse.</p>
+    <div class="preview-box">
+      <img id="preview-img" src="images/fenetre_fixe.png" alt="Aperçu fenêtre" />
+    </div>
+    <p id="preview-caption" class="preview-caption">Fenêtre fixe (non ouvrante) — Simple et lumineuse.</p>
   </div>
 
   <div class="widget-flex">
-    <!-- === 表单主区域 === -->
     <div class="form-wrapper">
 
-<!-- === 窗型选择 === -->
-<label>Type de fenêtre :</label>
-<div class="option-group">
-  <button class="option-btn active" data-step="type" data-value="FIXED_WINDOW_PRICING">Fenêtre fixe (non ouvrante)</button>
-  <button class="option-btn" data-step="type" data-value="COULISSANT_PVC">Fenêtre coulissante</button>
-  <button class="option-btn" data-step="type" data-value="OB_1_VANTAIL_PVC">Oscillo-battante 1 vantail</button>
-  <button class="option-btn" data-step="type" data-value="OF_1_VANTAIL_PVC">Fenêtre ouvrante 1 vantail</button>
-  <button class="option-btn" data-step="type" data-value="OF_2_VANTAUX_PVC">Fenêtre ouvrante 2 vantaux</button>
-  <button class="option-btn" data-step="type" data-value="OF_3_VANTAUX_PVC">Fenêtre ouvrante 3 vantaux</button>
-  <button class="option-btn" data-step="type" data-value="OF_4_VANTAUX_PVC">Fenêtre ouvrante 4 vantaux</button>
-  <button class="option-btn" data-step="type" data-value="OF2_1_FIXE_PVC">2 ouvrants + 1 fixe</button>
-  <button class="option-btn" data-step="type" data-value="OF2_2_FIXES_PVC">2 ouvrants + 2 fixes latéraux</button>
-  <button class="option-btn" data-step="type" data-value="PORTE_1_VANTAIL_PVC">Porte vitrée simple battant</button>
-  <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_1_PVC">Porte-fenêtre 1 vantail</button>
-  <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_2_FIXE_1_PVC">Porte-fenêtre 2 fixes + 1 vantail</button>
-  <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_2_FIXE_2_PVC">Porte-fenêtre 2 fixes + 2 vantaux</button>
-  <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_2_PVC">Porte-fenêtre 2 vantaux</button>
-  <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_3_PVC">Porte-fenêtre 3 vantaux</button>
-  <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_4_PVC">Porte-fenêtre 4 vantaux</button>
-  <button class="option-btn" data-step="type" data-value="SOUFFLET_PVC">Fenêtre à soufflet (petit ouvrant haut)</button>
-</div>
+      <!-- 窗型选择 -->
+      <label>Type de fenêtre :</label>
+      <div class="option-group">
+        <button class="option-btn active" data-step="type" data-value="FIXED_WINDOW_PRICING">Fenêtre fixe (non ouvrante)</button>
+        <button class="option-btn" data-step="type" data-value="COULISSANT_PVC">Fenêtre coulissante</button>
+        <button class="option-btn" data-step="type" data-value="OB_1_VANTAIL_PVC">Oscillo-battante 1 vantail</button>
+        <button class="option-btn" data-step="type" data-value="OF_1_VANTAIL_PVC">Fenêtre ouvrante 1 vantail</button>
+        <button class="option-btn" data-step="type" data-value="OF_2_VANTAUX_PVC">Fenêtre ouvrante 2 vantaux</button>
+        <button class="option-btn" data-step="type" data-value="OF_3_VANTAUX_PVC">Fenêtre ouvrante 3 vantaux</button>
+        <button class="option-btn" data-step="type" data-value="OF_4_VANTAUX_PVC">Fenêtre ouvrante 4 vantaux</button>
+        <button class="option-btn" data-step="type" data-value="OF2_1_FIXE_PVC">2 ouvrants + 1 fixe</button>
+        <button class="option-btn" data-step="type" data-value="OF2_2_FIXES_PVC">2 ouvrants + 2 fixes latéraux</button>
+        <button class="option-btn" data-step="type" data-value="PORTE_1_VANTAIL_PVC">Porte vitrée simple battant</button>
+        <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_1_PVC">Porte-fenêtre 1 vantail</button>
+        <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_2_FIXE_1_PVC">Porte-fenêtre 2 fixes + 1 vantail</button>
+        <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_2_FIXE_2_PVC">Porte-fenêtre 2 fixes + 2 vantaux</button>
+        <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_2_PVC">Porte-fenêtre 2 vantaux</button>
+        <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_3_PVC">Porte-fenêtre 3 vantaux</button>
+        <button class="option-btn" data-step="type" data-value="PORTE_FENETRE_4_PVC">Porte-fenêtre 4 vantaux</button>
+        <button class="option-btn" data-step="type" data-value="SOUFFLET_PVC">Fenêtre à soufflet (petit ouvrant haut)</button>
+      </div>
 
-
-      <!-- === 尺寸输入 === -->
+      <!-- 尺寸输入 -->
       <label for="gh-width">Largeur (mm) :</label>
       <input id="gh-width" type="number" placeholder="Largeur (mm) – ex. 1250">
       <div class="size-hint" id="hint-width"></div>
@@ -131,7 +125,7 @@
       <input id="gh-height" type="number" placeholder="Hauteur (mm) – ex. 1451">
       <div class="size-hint" id="hint-height"></div>
 
-      <!-- === 颜色选择 === -->
+      <!-- 颜色选择 -->
       <label>Couleur :</label>
       <div class="option-group">
         <button class="option-btn" data-step="color" data-value="blanc">Blanc</button>
@@ -139,7 +133,7 @@
         <button class="option-btn" data-step="color" data-value="couleur">Couleur deux faces</button>
       </div>
 
-      <!-- === 玻璃类型选择 === -->
+      <!-- 玻璃类型选择 -->
       <label>Type de vitrage :</label>
       <div class="option-group">
         <button class="option-btn" data-step="vitrage" data-value="4-20-4">4-20-4</button>
@@ -148,23 +142,23 @@
         <button class="option-btn" data-step="vitrage" data-value="44.2opale-16-4">44.2 opale - 16-4</button>
       </div>
 
-      <!-- === OB 选择 === -->
+      <!-- OB 选择 -->
       <label>Système OB :</label>
       <div class="option-group">
         <button type="button" class="option-btn" id="btn-ob-oui" data-step="ob" data-value="oui">Oui</button>
         <button type="button" class="option-btn" data-step="ob" data-value="non">Non</button>
       </div>
 
-      <!-- === 获取报价按钮 === -->
+      <!-- 获取报价按钮 -->
       <button id="gh-devisBtn">🏏 Calculer mon prix maintenant</button>
 
-      <!-- === 理性信任提示 === -->
+      <!-- 理性信任提示 -->
       <p class="trust-message">
         🔍 Simulation à titre indicatif — Sans engagement.<br>
         Vos données ne sont ni enregistrées, ni partagées.
       </p>
 
-      <!-- === 结果显示区 === -->
+      <!-- 结果显示区 -->
       <div id="gh-result"></div>
     </div>
   </div>
@@ -173,11 +167,16 @@
 <!-- ========== FOOTER ========== -->
 <footer>
   <p>© 2025 BatiHero. Tous droits réservés.</p>
-  <p><a href="#">Mentions légales</a> | <a href="#">CGV</a></p>
+  <p>
+    <a href="about.html">Qui sommes-nous</a> |
+    <a href="faq.html">FAQ</a> |
+    <a href="#">Mentions légales</a> |
+    <a href="#">CGV</a>
+  </p>
 </footer>
 
 <script src="script.js"></script>
-  <div id="feedback-modal" class="modal" style="display:none;">
+<div id="feedback-modal" class="modal" style="display:none;">
   <div class="modal-content">
     <span class="close-btn" onclick="closeModal()">×</span>
     <h3>📝 Votre retour est précieux</h3>
