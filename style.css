@@ -157,9 +157,15 @@ nav a:hover {
   color: #222;
 }
 .form-subtitle {
-  font-size: 13px;
-  color: #777;
+  font-size: 14px;
+  color: #004085;
+  background: #e9f3ff;
+  padding: 10px 14px;
+  border-left: 4px solid #007bff;
+  border-radius: 6px;
   margin-bottom: 20px;
+  font-weight: 600;
+  line-height: 1.6;
 }
 .form-reminder {
   background: #eef6fd;
@@ -362,4 +368,3 @@ footer a {
   text-align: center;    /* 文本居中 */
   width: 100%;
 }
-
