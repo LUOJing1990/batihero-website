@@ -98,13 +98,15 @@ nav a:hover {
 
 /* ======== 表单容器 ======== */
 #devis-widget {
+  flex-grow: 1; /* 填满父容器剩余空间，实现自适应宽度 */
   max-width: 960px;
-  margin: 40px auto;
+  margin: 40px 0; /* 去掉 auto，避免被 grid 左侧栏影响 */
   padding: 40px 30px;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
   border: 1px solid #e2e8f0;
+
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
@@ -411,20 +413,29 @@ footer a {
 
 /* ======== 主布局容器样式（说明区+模拟器） ======== */
 
+/* 三栏布局容器 */
 .main-wrapper {
   display: grid;
-  grid-template-columns: 1fr minmax(960px, 100%) 1fr;
-  gap: 0;
-  max-width: 100%;
+  grid-template-columns: 1fr minmax(auto, 1200px) 1fr;
+  width: 100%;
 }
 
-/* 中间内容容器（说明 + 模拟器） */
+/* 中间内容容器 */
 .grid-center {
   display: flex;
+  justify-content: center;
   align-items: flex-start;
-  gap: 40px;
   padding: 20px;
 }
+
+/* 包含左侧说明 + 模拟器的盒子，限制最大宽度并自动水平居中 */
+.content-wrapper {
+  display: flex;
+  gap: 40px;
+  width: 100%;
+  max-width: 1100px;
+}
+
 
 /* 左侧说明区样式 */
 .left-info {
