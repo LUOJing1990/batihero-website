@@ -452,5 +452,10 @@ footer a {
 .anchor-offset {
   scroll-margin-top: 100px;
 }
-
+.anchor-offset {
+  scroll-margin-top: 100px;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+}
 
