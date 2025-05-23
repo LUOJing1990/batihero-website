@@ -116,6 +116,7 @@ nav a:hover {
   width: 260px;
   font-size: 14px;
   color: #333;
+  /* ✅ 确保不包含 border-left，这里已经干净 */
 }
 .price-factors {
   background: #f4f9ff;
@@ -284,7 +285,7 @@ input.error {
 /* ======== 预览图区域 ======== */
 .preview-box {
   display: flex;
-  flex-direction: column; /* ← 关键：改为垂直方向排列 */
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -297,7 +298,7 @@ input.error {
 }
 .preview-box img {
   max-width: 85%;
-  max-height: 160px;  /* ← 控制图片垂直尺寸不超过 220px */
+  max-height: 160px;
   object-fit: contain;
 }
 
@@ -364,7 +365,7 @@ footer a {
 .form-intro {
   display: flex;
   flex-direction: column;
-  align-items: center;   /* 所有子元素横向居中 */
-  text-align: center;    /* 文本居中 */
+  align-items: center;
+  text-align: center;
   width: 100%;
 }
