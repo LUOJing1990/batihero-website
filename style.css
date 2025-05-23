@@ -410,13 +410,19 @@ footer a {
 }
 
 /* ======== 主布局容器样式（说明区+模拟器） ======== */
+
 .main-wrapper {
+  display: grid;
+  grid-template-columns: 1fr minmax(960px, 100%) 1fr;
+  gap: 0;
+  max-width: 100%;
+}
+
+/* 中间内容容器（说明 + 模拟器） */
+.grid-center {
   display: flex;
-  justify-content: center;
   align-items: flex-start;
-  gap: 30px;
-  max-width: 1200px;
-  margin: 0 auto;
+  gap: 40px;
   padding: 20px;
 }
 
