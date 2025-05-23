@@ -116,18 +116,22 @@ nav a:hover {
   width: 260px;
   font-size: 14px;
   color: #333;
-  /* ✅ 确保不包含 border-left，这里已经干净 */
+  padding: 0;           /* 确保没有 padding 或额外间距影响视觉 */
+  background: transparent; /* 防止背景色造成重叠 */
+  box-shadow: none;     /* 若启用了阴影，也可先取消测试 */
 }
+
 .price-factors {
-  background: #f4f9ff;
+  background: #ffffff; /* 改成纯白底，避免与外层浅蓝背景叠加造成“双边框”错觉 */
   border-left: 4px solid #007BFF;
-  padding: 18px 16px 18px 20px;
+  padding: 16px 16px 16px 20px;
   border-radius: 6px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  box-shadow: none;  /* ✅ 去掉阴影，避免叠加出“阴影边缘 + 蓝线”效果 */
   font-size: 14px;
   line-height: 1.6;
   color: #333;
 }
+
 .price-factors h3 {
   margin-top: 0;
   font-size: 17px;
