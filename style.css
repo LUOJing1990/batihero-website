@@ -408,5 +408,29 @@ footer a {
   cursor: pointer;
   color: #999;
 }
+/* ======== 价格说明模块样式 ======== */
+.price-factors {
+  max-width: 960px;
+  margin: 40px auto 0;
+  background: #f4f9ff;
+  border-left: 4px solid #007BFF;
+  padding: 20px 25px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+}
+.price-factors h3 {
+  margin-top: 0;
+  color: #004e8f;
+  font-size: 17px;
+}
+.price-factors ul {
+  padding-left: 20px;
+  margin: 0;
+}
+.price-factors li {
+  margin-bottom: 10px;
+}
 
 
