@@ -98,9 +98,8 @@ nav a:hover {
 
 /* ======== 表单容器 ======== */
 #devis-widget {
-  flex-grow: 1; /* 填满父容器剩余空间，实现自适应宽度 */
+  flex-grow: 1;
   max-width: 960px;
-  margin: 40px 0; /* 去掉 auto，避免被 grid 左侧栏影响 */
   padding: 40px 30px;
   background: #fff;
   border-radius: 12px;
@@ -113,6 +112,7 @@ nav a:hover {
   align-items: flex-start;
   justify-content: center;
 }
+
 #devis-widget h2 {
   font-size: 22px;
   font-weight: 600;
@@ -431,9 +431,11 @@ footer a {
 /* 包含左侧说明 + 模拟器的盒子，限制最大宽度并自动水平居中 */
 .content-wrapper {
   display: flex;
+  justify-content: center;
   gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
   width: 100%;
-  max-width: 1100px;
 }
 
 
