@@ -283,16 +283,17 @@ input.error {
 
 /* ======== 预览图区域 ======== */
 .preview-box {
+  display: flex;
+  flex-direction: column; /* ← 关键：改为垂直方向排列 */
+  align-items: center;
+  justify-content: center;
   width: 100%;
   max-width: 320px;
-  height: 280px;
+  height: auto;
   margin-bottom: 20px;
   border: 2px solid #eee;
   border-radius: 8px;
   background: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 .preview-box img {
   max-width: 90%;
@@ -305,8 +306,6 @@ input.error {
   margin-top: 8px;
   text-align: center;
   max-width: 320px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 /* ======== 页脚 ======== */
