@@ -20,16 +20,19 @@
 
   <link rel="stylesheet" href="style.css">
   <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
     .main-wrapper {
       display: flex;
       justify-content: center;
-      padding: 20px;
     }
     .grid-center {
       display: flex;
-      align-items: flex-start;
       gap: 40px;
-      max-width: 1200px;
+      padding: 20px;
+      max-width: 1280px;
       width: 100%;
     }
     .form-intro {
@@ -69,11 +72,16 @@
     .form-wrapper input {
       margin-bottom: 15px;
     }
+    .anchor-offset {
+      scroll-margin-top: 140px;
+      display: block;
+      height: 1px;
+      margin: 0;
+      padding: 0;
+    }
   </style>
-  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "171d42da02bd41bdb815b32d87de1549"}'></script>
 </head>
 <body>
-
 <header>
   <a href="/index.html" class="logo">BatiHero</a>
   <nav>
@@ -107,7 +115,7 @@
       </section>
     </div>
 
-    <div>
+    <div style="flex: 1;">
       <div id="devis-anchor" class="anchor-offset"></div>
 <!-- ========== SIMULATEUR DEVIS ========== -->
 <section id="devis-widget">
@@ -224,3 +232,4 @@
 
 </body>
 </html>
+
