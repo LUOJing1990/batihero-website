@@ -96,7 +96,34 @@ nav a:hover {
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* ======== 表单容器 ======== */
+/* ======== 居中布局结构 ======== */
+.page-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+.center-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 60px 20px;
+  box-sizing: border-box;
+}
+.left-info {
+  position: absolute;
+  top: 60px;
+  left: 40px;
+  width: 260px;
+  background: #f4f9ff;
+  border-left: 4px solid #007BFF;
+  padding: 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #333;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* ======== 模拟器主容器 ======== */
 #devis-widget {
   flex-grow: 1;
   max-width: 960px;
@@ -105,14 +132,7 @@ nav a:hover {
   border-radius: 12px;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
   border: 1px solid #e2e8f0;
-
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
-  align-items: flex-start;
-  justify-content: center;
 }
-
 #devis-widget h2 {
   font-size: 22px;
   font-weight: 600;
@@ -142,7 +162,6 @@ label {
   margin: 25px 0 10px;
 }
 
-/* ======== 输入框样式 ======== */
 input {
   width: 100%;
   padding: 10px;
@@ -164,7 +183,6 @@ input.error {
   padding-left: 2px;
 }
 
-/* ======== 选项按钮组 ======== */
 .option-group {
   display: flex;
   flex-wrap: wrap;
@@ -202,7 +220,6 @@ input.error {
   pointer-events: none;
 }
 
-/* ======== 提交按钮 ======== */
 #gh-devisBtn {
   width: 100%;
   background-color: #27ae60;
@@ -238,37 +255,7 @@ input.error {
   100% { transform: translateY(-50%) rotate(360deg); }
 }
 
-/* ======== 报价结果卡片 ======== */
-#gh-result {
-  margin-top: 15px;
-  font-size: 16px;
-  color: #007BFF;
-}
-.price-card {
-  margin-top: 20px;
-  padding: 18px 20px;
-  border: 1px solid #d0e1f9;
-  border-radius: 8px;
-  background: #f9fcff;
-  color: #333;
-  font-size: 14.5px;
-  line-height: 1.6;
-  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.05);
-}
-.price-card h3 {
-  margin-top: 0;
-  margin-bottom: 14px;
-  font-size: 17px;
-  color: #007bff;
-}
-.highlight-price {
-  font-size: 16px;
-  font-weight: bold;
-  color: #218838;
-  margin-top: 10px;
-}
-
-/* ======== 图像预览与描述 ======== */
+/* ======== 预览图 ======== */
 .preview-box {
   width: 100%;
   max-width: 320px;
@@ -312,7 +299,7 @@ footer a {
   margin: 0 5px;
 }
 
-/* ======== 移动端布局优化 ======== */
+/* ======== 移动端优化 ======== */
 @media screen and (max-width: 600px) {
   #devis-widget {
     flex-direction: column;
@@ -339,138 +326,7 @@ footer a {
     font-size: 22px;
   }
 }
-.quick-feedback {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 14px;
-  color: #444;
-}
-.feedback-btn {
-  margin: 6px 10px;
-  padding: 8px 16px;
-  font-size: 13px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  background: #f4f4f4;
-  cursor: pointer;
-  transition: 0.2s;
-}
-.feedback-btn:hover {
-  background: #e0e0e0;
-}
 
-.price-note {
-  margin-top: 16px;
-  font-size: 12px;
-  color: #888;
-  text-align: center;
-}
-.modal {
-  position: fixed;
-  z-index: 9999;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.4);
-  display: flex; justify-content: center; align-items: center;
-}
-
-.modal-content {
-  background: white;
-  padding: 20px 25px;
-  border-radius: 8px;
-  width: 90%;
-  max-width: 400px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  text-align: center;
-}
-
-.modal-content textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  resize: vertical;
-  margin-bottom: 12px;
-}
-
-.modal-content button {
-  background: #007BFF;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.close-btn {
-  position: absolute;
-  top: 12px; right: 20px;
-  font-size: 18px;
-  cursor: pointer;
-  color: #999;
-}
-
-/* ======== 主布局容器样式（说明区+模拟器） ======== */
-/* 三栏布局容器 */
-.main-wrapper {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  padding: 40px 20px;
-}
-
-.grid-center {
-  display: flex;
-  flex-direction: row;
-  gap: 40px;
-  max-width: 1200px;
-  width: 100%;
-  align-items: flex-start;
-  justify-content: center;
-}
-
-
-/* 包含左侧说明 + 模拟器的盒子，限制最大宽度并自动水平居中 */
-.content-wrapper {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-
-/* 左侧说明区样式 */
-.left-info {
-  width: 260px;
-  flex-shrink: 0;
-}
-
-.price-factors {
-  background: #f4f9ff;
-  border-left: 4px solid #007BFF;
-  padding: 20px;
-  border-radius: 6px;
-  font-size: 14px;
-  line-height: 1.6;
-  color: #333;
-}
-.price-factors h3 {
-  margin-top: 0;
-  color: #004e8f;
-  font-size: 17px;
-}
-.price-factors ul {
-  padding-left: 20px;
-  margin: 0;
-}
-.price-factors li {
-  margin-bottom: 10px;
-}
-
-/* 隐形锚点偏移修正：用于 header 不遮挡标题 */
 .anchor-offset {
   scroll-margin-top: 140px;
   display: block;
@@ -478,5 +334,6 @@ footer a {
   margin: 0;
   padding: 0;
 }
+
 
 
