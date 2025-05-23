@@ -447,10 +447,7 @@ footer a {
 .price-factors li {
   margin-bottom: 10px;
 }
-/* ======== 修复锚点被 sticky header 遮挡的问题 ======== */
-#devis-widget {
-  scroll-margin-top: 100px;
-}
+
 /* 隐形锚点偏移修正：用于 header 不遮挡标题 */
 .anchor-offset {
   scroll-margin-top: 100px;
