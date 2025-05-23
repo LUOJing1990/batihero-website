@@ -408,13 +408,28 @@ footer a {
   cursor: pointer;
   color: #999;
 }
-/* ======== 价格说明模块样式 ======== */
+
+/* ======== 主布局容器样式（说明区+模拟器） ======== */
+.main-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* 左侧说明区样式 */
+.left-info {
+  width: 260px;
+  flex-shrink: 0;
+}
+
 .price-factors {
-  max-width: 960px;
-  margin: 40px auto 0;
   background: #f4f9ff;
   border-left: 4px solid #007BFF;
-  padding: 20px 25px;
+  padding: 20px;
   border-radius: 6px;
   font-size: 14px;
   line-height: 1.6;
