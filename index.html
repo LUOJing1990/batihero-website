@@ -6,25 +6,18 @@
   <meta name="description" content="Obtenez une estimation immédiate et gratuite pour vos fenêtres PVC sur mesure. BatiHero simplifie vos projets de rénovation.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Social share (Open Graph & Twitter Card) -->
   <meta property="og:title" content="BatiHero – Estimez votre fenêtre en ligne">
   <meta property="og:description" content="Simulateur rapide et gratuit pour fenêtres PVC sur mesure.">
   <meta property="og:image" content="https://www.batihero.com/images/fenetre_fixe.png">
   <meta property="og:url" content="https://www.batihero.com">
   <meta name="twitter:card" content="summary_large_image">
 
-<!-- 必备 -->
-<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="icon" type="image/svg+xml" href="/images/icons/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="96x96" href="/images/icons/favicon-96x96.png">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
 
-<!-- 可选图标支持更多平台 -->
-<link rel="icon" type="image/svg+xml" href="/images/icons/favicon.svg" />
-<link rel="icon" type="image/png" sizes="96x96" href="/images/icons/favicon-96x96.png">
-<link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-
-<!-- Web App Manifest -->
-<link rel="manifest" href="/site.webmanifest">
-
-  
   <link rel="stylesheet" href="style.css">
   <style>
     .form-intro {
@@ -64,23 +57,31 @@
     .form-wrapper input {
       margin-bottom: 15px;
     }
+    .main-wrapper {
+      display: grid;
+      grid-template-columns: 1fr minmax(960px, 100%) 1fr;
+      max-width: 100%;
+    }
+    .grid-center {
+      display: flex;
+      align-items: flex-start;
+      gap: 40px;
+      padding: 20px;
+    }
   </style>
-  <!-- Cloudflare Web Analytics -->
   <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "171d42da02bd41bdb815b32d87de1549"}'></script>
 </head>
 <body>
 
-<!-- ========== HEADER ========== -->
 <header>
   <a href="/index.html" class="logo">BatiHero</a>
   <nav>
     <a href="about.html">Qui sommes-nous</a>
     <a href="faq.html">FAQ</a>
-    <a href="#devis-widget">Estimation</a>
+    <a href="#devis-anchor">Estimation</a>
   </nav>
 </header>
 
-<!-- ========== HERO SECTION ========== -->
 <section class="hero">
   <h1>Estimez gratuitement votre fenêtre PVC<br>avec installation possible</h1>
   <p>Un devis indicatif, clair et immédiat — sans engagement.</p>
@@ -89,28 +90,24 @@
     <a href="#" class="btn btn-blue">Je suis installateur — Commander rapidement</a>
   </div>
 </section>
-  
-<div class="main-wrapper">
-  <!-- 左边空白栏 -->
-  <div class="grid-left"></div>
 
-  <!-- 中间内容：说明区 + 模拟器 -->
+<div class="main-wrapper">
+  <div></div>
   <div class="grid-center">
-    <div class="content-wrapper">
-      <div class="left-info">
-        <section class="price-factors">
-          <h3>💡 Qu’est-ce qui influence le prix d’une fenêtre ?</h3>
-          <ul>
-            <li><strong>1. Sur mesure ou standard ?</strong> → Une fenêtre aux dimensions personnalisées coûte plus cher.</li>
-            <li><strong>2. Type de fenêtre</strong> → Plus il y a d’ouvrants, plus le prix est élevé.</li>
-            <li><strong>3. Couleur</strong> → Le blanc est souvent le moins cher, car en stock chez les fabricants.</li>
-            <li><strong>4. Type de vitrage</strong> → Double vitrage renforcé ou phonique augmente le coût.</li>
-            <li><strong>5. Système OB</strong> (oscillo-battant) → Permet une aération partielle sans ouvrir totalement.</li>
-          </ul>
-        </section>
-      </div>
-  <!-- 隐形锚点：避免被 sticky header 遮挡 -->
-<div id="devis-anchor" class="anchor-offset"></div>
+    <div class="left-info">
+      <section class="price-factors">
+        <h3>💡 Qu’est-ce qui influence le prix d’une fenêtre ?</h3>
+        <ul>
+          <li><strong>1. Sur mesure ou standard ?</strong> → Une fenêtre aux dimensions personnalisées coûte plus cher.</li>
+          <li><strong>2. Type de fenêtre</strong> → Plus il y a d’ouvrants, plus le prix est élevé.</li>
+          <li><strong>3. Couleur</strong> → Le blanc est souvent le moins cher, car en stock chez les fabricants.</li>
+          <li><strong>4. Type de vitrage</strong> → Double vitrage renforcé ou phonique augmente le coût.</li>
+          <li><strong>5. Système OB</strong> (oscillo-battant) → Permet une aération partielle sans ouvrir totalement.</li>
+        </ul>
+      </section>
+    </div>
+    <div>
+      <div id="devis-anchor" class="anchor-offset"></div>
 <!-- ========== SIMULATEUR DEVIS ========== -->
 <section id="devis-widget">
   <h2>Estimez le prix de votre fenêtre PVC en 1 minute</h2>
@@ -199,22 +196,19 @@
     </div>
   </div>
 </section>
-    </div>
   </div>
+  </div>
+  <div></div>
+</div>
 
-  <!-- 右边空白栏 -->
-  <div class="grid-right"></div>
-</div>    <!-- .main-wrapper 结束 -->
-
-<!-- ========== FOOTER ========== -->
 <footer>
   <p>© 2025 BatiHero. Tous droits réservés.</p>
-<p>
-  <a href="about.html">Qui sommes-nous</a> |
-  <a href="faq.html">FAQ</a> |
-  <a href="mentions_legales.html">Mentions légales</a> |
-  <a href="cgv.html">CGV</a>
-</p>
+  <p>
+    <a href="about.html">Qui sommes-nous</a> |
+    <a href="faq.html">FAQ</a> |
+    <a href="mentions_legales.html">Mentions légales</a> |
+    <a href="cgv.html">CGV</a>
+  </p>
 </footer>
 
 <script src="script.js" defer></script>
