@@ -297,7 +297,7 @@ input.error {
 }
 .preview-box img {
   max-width: 85%;
-  max-height: 220px;  /* ← 控制图片垂直尺寸不超过 220px */
+  max-height: 160px;  /* ← 控制图片垂直尺寸不超过 220px */
   object-fit: contain;
 }
 
