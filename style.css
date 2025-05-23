@@ -451,9 +451,6 @@ footer a {
 /* 隐形锚点偏移修正：用于 header 不遮挡标题 */
 .anchor-offset {
   scroll-margin-top: 100px;
-}
-.anchor-offset {
-  scroll-margin-top: 100px;
   height: 0;
   overflow: hidden;
   visibility: hidden;
