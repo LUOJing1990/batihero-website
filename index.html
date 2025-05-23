@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -5,79 +6,57 @@
   <title>Devis fenêtres PVC en ligne – BatiHero</title>
   <meta name="description" content="Obtenez une estimation immédiate et gratuite pour vos fenêtres PVC sur mesure. BatiHero simplifie vos projets de rénovation.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <meta property="og:title" content="BatiHero – Estimez votre fenêtre en ligne">
   <meta property="og:description" content="Simulateur rapide et gratuit pour fenêtres PVC sur mesure.">
   <meta property="og:image" content="https://www.batihero.com/images/fenetre_fixe.png">
   <meta property="og:url" content="https://www.batihero.com">
   <meta name="twitter:card" content="summary_large_image">
-
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
   <link rel="icon" type="image/svg+xml" href="/images/icons/favicon.svg" />
   <link rel="icon" type="image/png" sizes="96x96" href="/images/icons/favicon-96x96.png">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-
   <link rel="stylesheet" href="style.css">
   <style>
     body {
       margin: 0;
       padding: 0;
+      font-family: "Segoe UI", Roboto, sans-serif;
+      background: #f6f8fa;
     }
-    .main-wrapper {
+    .page-container {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+    }
+    .center-container {
       display: flex;
       justify-content: center;
-    }
-    .grid-center {
-      display: flex;
-      gap: 40px;
-      padding: 20px;
-      max-width: 1280px;
       width: 100%;
+      padding: 60px 20px;
+      box-sizing: border-box;
     }
-    .form-intro {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 12px;
-    }
-    .form-reminder {
-      margin: 0;
-      font-size: 13.5px;
+    .left-info {
+      position: absolute;
+      top: 60px;
+      left: 40px;
+      width: 260px;
+      background: #f4f9ff;
+      border-left: 4px solid #007BFF;
+      padding: 20px;
+      border-radius: 6px;
+      font-size: 14px;
       color: #333;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
-    .form-subtitle {
-      margin: 0;
-      font-size: 13px;
-      color: #555;
-    }
-    .preview-box {
-      margin: 0 auto;
-      max-height: 180px;
-    }
-    .option-group {
-      margin-bottom: 10px;
-    }
-    .option-btn {
-      font-size: 15px;
-    }
-    .trust-message {
-      font-size: 12px;
-      color: #888;
-      text-align: center;
-      margin-top: 10px;
-      line-height: 1.5;
-    }
-    .form-wrapper input {
-      margin-bottom: 15px;
-    }
-    .anchor-offset {
-      scroll-margin-top: 140px;
-      display: block;
-      height: 1px;
-      margin: 0;
-      padding: 0;
+    #devis-widget {
+      max-width: 960px;
+      width: 100%;
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+      border: 1px solid #e2e8f0;
     }
   </style>
 </head>
@@ -100,39 +79,29 @@
   </div>
 </section>
 
-<div class="main-wrapper">
-  <div class="grid-center">
-    <div class="left-info">
-      <section class="price-factors">
-        <h3>💡 Qu’est-ce qui influence le prix d’une fenêtre ?</h3>
-        <ul>
-          <li><strong>1. Sur mesure ou standard ?</strong> → Une fenêtre aux dimensions personnalisées coûte plus cher.</li>
-          <li><strong>2. Type de fenêtre</strong> → Plus il y a d’ouvrants, plus le prix est élevé.</li>
-          <li><strong>3. Couleur</strong> → Le blanc est souvent le moins cher, car en stock chez les fabricants.</li>
-          <li><strong>4. Type de vitrage</strong> → Double vitrage renforcé ou phonique augmente le coût.</li>
-          <li><strong>5. Système OB</strong> (oscillo-battant) → Permet une aération partielle sans ouvrir totalement.</li>
-        </ul>
-      </section>
-    </div>
-
-    <div style="flex: 1;">
-      <div id="devis-anchor" class="anchor-offset"></div>
-<!-- ========== SIMULATEUR DEVIS ========== -->
-<section id="devis-widget">
-  <h2>Estimez le prix de votre fenêtre PVC en 1 minute</h2>
-
-  <div class="form-intro">
-    <div class="form-reminder">
-      📌 <strong>Étapes :</strong> 1. Type → 2. Dimensions → 3. Couleur → 4. Vitrage → 5. OB (optionnel)
-    </div>
-    <p class="form-subtitle">Remplissez les champs ci-dessous pour obtenir une estimation immédiate.</p>
-    
-    <div class="preview-box">
-      <img id="preview-img" src="images/fenetre_fixe.png" alt="Aperçu fenêtre" />
-    </div>
-    <p id="preview-caption" class="preview-caption">Fenêtre fixe (non ouvrante) — Simple et lumineuse.</p>
+<div class="page-container">
+  <div class="left-info">
+    <section class="price-factors">
+      <h3>💡 Qu’est-ce qui influence le prix d’une fenêtre ?</h3>
+      <ul>
+        <li><strong>1. Sur mesure ou standard ?</strong> → Une fenêtre aux dimensions personnalisées coûte plus cher.</li>
+        <li><strong>2. Type de fenêtre</strong> → Plus il y a d’ouvrants, plus le prix est élevé.</li>
+        <li><strong>3. Couleur</strong> → Le blanc est souvent le moins cher, car en stock chez les fabricants.</li>
+        <li><strong>4. Type de vitrage</strong> → Double vitrage renforcé ou phonique augmente le coût.</li>
+        <li><strong>5. Système OB</strong> (oscillo-battant) → Permet une aération partielle sans ouvrir totalement.</li>
+      </ul>
+    </section>
   </div>
 
+  <div class="center-container">
+    <section id="devis-widget">
+      <h2>Estimez le prix de votre fenêtre PVC en 1 minute</h2>
+      <p class="form-subtitle">📌 Étapes : 1. Type → 2. Dimensions → 3. Couleur → 4. Vitrage → 5. OB (optionnel)</p>
+      <p class="form-subtitle">Remplissez les champs ci-dessous pour obtenir une estimation immédiate.</p>
+      <div class="preview-box">
+        <img id="preview-img" src="images/fenetre_fixe.png" alt="Aperçu fenêtre" style="max-width:100%; height:auto;">
+        <p id="preview-caption" style="text-align:center; font-size:13px; color:#555;">Fenêtre fixe (non ouvrante) — Simple et lumineuse.</p>
+      </div>
   <div class="widget-flex">
     <div class="form-wrapper">
 
@@ -205,7 +174,6 @@
     </div>
   </div>
 </section>
-    </div>
   </div>
 </div>
 
@@ -220,16 +188,7 @@
 </footer>
 
 <script src="script.js" defer></script>
-<div id="feedback-modal" class="modal" style="display:none;">
-  <div class="modal-content">
-    <span class="close-btn" onclick="closeModal()">×</span>
-    <h3>📝 Votre retour est précieux</h3>
-    <p>Partagez une idée, une remarque ou une amélioration souhaitée :</p>
-    <textarea id="feedback-text" placeholder="Votre message..." rows="4"></textarea>
-    <button onclick="submitFeedback()">Envoyer</button>
-  </div>
-</div>
-
 </body>
 </html>
+
 
