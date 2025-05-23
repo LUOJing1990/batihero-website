@@ -20,6 +20,18 @@
 
   <link rel="stylesheet" href="style.css">
   <style>
+    .main-wrapper {
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+    .grid-center {
+      display: flex;
+      align-items: flex-start;
+      gap: 40px;
+      max-width: 1200px;
+      width: 100%;
+    }
     .form-intro {
       display: flex;
       flex-direction: column;
@@ -57,17 +69,6 @@
     .form-wrapper input {
       margin-bottom: 15px;
     }
-    .main-wrapper {
-      display: grid;
-      grid-template-columns: 1fr minmax(960px, 100%) 1fr;
-      max-width: 100%;
-    }
-    .grid-center {
-      display: flex;
-      align-items: flex-start;
-      gap: 40px;
-      padding: 20px;
-    }
   </style>
   <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "171d42da02bd41bdb815b32d87de1549"}'></script>
 </head>
@@ -92,7 +93,6 @@
 </section>
 
 <div class="main-wrapper">
-  <div></div>
   <div class="grid-center">
     <div class="left-info">
       <section class="price-factors">
@@ -106,6 +106,7 @@
         </ul>
       </section>
     </div>
+
     <div>
       <div id="devis-anchor" class="anchor-offset"></div>
 <!-- ========== SIMULATEUR DEVIS ========== -->
@@ -196,9 +197,8 @@
     </div>
   </div>
 </section>
+    </div>
   </div>
-  </div>
-  <div></div>
 </div>
 
 <footer>
