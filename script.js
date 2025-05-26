@@ -8,6 +8,27 @@ let config = {
   height: 0
 };
 
+// 显示用类型标签映射
+const typeLabelMap = {
+  FIXED_WINDOW_PRICING: "Fenêtre fixe",
+  COULISSANT_PVC: "Fenêtre coulissante",
+  OB_1_VANTAIL_PVC: "Oscillo-battante 1 vantail",
+  OF_1_VANTAIL_PVC: "Fenêtre ouvrante 1 vantail",
+  OF_2_VANTAUX_PVC: "Fenêtre ouvrante 2 vantaux",
+  OF_3_VANTAUX_PVC: "Fenêtre ouvrante 3 vantaux",
+  OF_4_VANTAUX_PVC: "Fenêtre ouvrante 4 vantaux",
+  OF2_1_FIXE_PVC: "2 ouvrants + 1 fixe",
+  OF2_2_FIXES_PVC: "2 ouvrants + 2 fixes latéraux",
+  PORTE_1_VANTAIL_PVC: "Porte vitrée simple battant",
+  PORTE_FENETRE_1_PVC: "Porte-fenêtre 1 vantail",
+  PORTE_FENETRE_2_FIXE_1_PVC: "Porte-fenêtre 2 fixes + 1 vantail",
+  PORTE_FENETRE_2_FIXE_2_PVC: "Porte-fenêtre 2 fixes + 2 vantaux",
+  PORTE_FENETRE_2_PVC: "Porte-fenêtre 2 vantaux",
+  PORTE_FENETRE_3_PVC: "Porte-fenêtre 3 vantaux",
+  PORTE_FENETRE_4_PVC: "Porte-fenêtre 4 vantaux",
+  SOUFFLET_PVC: "Fenêtre à soufflet"
+};
+
 // 尺寸推荐表
 const sizeLimits = {
   FIXED_WINDOW_PRICING:         { width: [400, 2000], height: [350, 2350] },
@@ -86,7 +107,6 @@ function updateFenetreImage(type) {
   }
 }
 
-// OB按钮状态
 function toggleOBDisabled(disabled) {
   const btn = document.querySelector('.option-btn[data-step="ob"][data-value="oui"]');
   if (!btn) return;
@@ -94,7 +114,6 @@ function toggleOBDisabled(disabled) {
   btn.classList.toggle('disabled', disabled);
 }
 
-// 尺寸提示
 function updateSizeHint() {
   const type = config.type;
   const hintW = document.getElementById('hint-width');
@@ -109,7 +128,6 @@ function updateSizeHint() {
   hintH.textContent = `👉 Hauteur recommandée : ${range.height[0]} mm — ${range.height[1]} mm`;
 }
 
-// OB按钮可用性
 function updateOBButtonState() {
   const type = config.type;
   const w = config.width;
@@ -123,7 +141,6 @@ function updateOBButtonState() {
   toggleOBDisabled(leafWidth > 800 || h > 2000);
 }
 
-// 激活按钮
 function setActiveBtnGroup(step, value) {
   document.querySelectorAll(`.option-btn[data-step="${step}"]`).forEach(btn => {
     btn.classList.remove('active');
@@ -137,7 +154,6 @@ function setActiveBtnGroup(step, value) {
   if (['type', 'width', 'height'].includes(step)) updateOBButtonState();
 }
 
-// 主逻辑
 document.addEventListener('DOMContentLoaded', () => {
   setActiveBtnGroup('type', 'FIXED_WINDOW_PRICING');
 
@@ -157,7 +173,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 获取报价
   const btn = document.getElementById('gh-devisBtn');
   const out = document.getElementById('gh-result');
   btn.addEventListener('click', async () => {
@@ -206,19 +221,19 @@ document.addEventListener('DOMContentLoaded', () => {
       if (data.base_price) {
         out.innerHTML = `
         <div class="price-card">
-        <h3>✅ Résumé de votre demande</h3>
-        <p><strong>Type :</strong> ${config.type}</p>
-        <p><strong>Dimensions :</strong> ${w} mm × ${h} mm</p>
-        <p><strong>Couleur :</strong> ${config.color}</p>
-        <p><strong>Vitrage :</strong> ${config.vitrage}</p>
-        <p><strong>OB :</strong> ${config.ob}</p>
-        <p class="highlight-price"><strong>Total estimé :</strong> ${data.base_price} € HT</p>
-        <div class="quick-feedback">
-        <p>💬 Ce prix vous paraît utile ?</p>
-        <button class="feedback-btn" onclick="openModal('oui')">👍 Oui</button>
-        <button class="feedback-btn" onclick="openModal('parler')">❓ Je préfère en parler</button>
-        </div>
-        <p class="price-note">💡 Montant indicatif basé sur vos choix. Livraison et pose non inclus.</p>
+          <h3>✅ Résumé de votre demande</h3>
+          <p><strong>🪟 Type :</strong> ${typeLabelMap[config.type] || config.type}</p>
+          <p><strong>Dimensions :</strong> ${w} mm × ${h} mm</p>
+          <p><strong>Couleur :</strong> ${config.color}</p>
+          <p><strong>Vitrage :</strong> ${config.vitrage}</p>
+          <p><strong>OB :</strong> ${config.ob}</p>
+          <p class="highlight-price"><strong>Total estimé :</strong> ${data.base_price} € HT</p>
+          <div class="quick-feedback">
+            <p>💬 Ce prix vous paraît utile ?</p>
+            <button class="feedback-btn" onclick="openModal('oui')">👍 Oui</button>
+            <button class="feedback-btn" onclick="openModal('parler')">❓ Je préfère en parler</button>
+          </div>
+          <p class="price-note">💡 Montant indicatif basé sur vos choix. Livraison et pose non inclus.</p>
         </div>`;
       } else {
         out.textContent = "Aucune correspondance pour cette taille.";
@@ -231,7 +246,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 折叠说明
   const toggleBtn = document.querySelector('.collapsible-toggle');
   const content = document.querySelector('.collapsible-content');
   if (toggleBtn && content) {
@@ -243,7 +257,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 返回顶部按钮逻辑 ✅✅✅
   const backToTop = document.getElementById('back-to-top');
   window.addEventListener('scroll', () => {
     backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
@@ -253,7 +266,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// 弹窗反馈逻辑
 function openModal(feedbackType) {
   document.getElementById('feedback-modal').style.display = 'flex';
   window.currentFeedbackType = feedbackType;
