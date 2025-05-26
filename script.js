@@ -277,4 +277,12 @@ async function submitFeedback() {
     alert("Erreur lors de l’envoi du message.");
   }
 }
+window.addEventListener('scroll', () => {
+  const backToTop = document.getElementById('back-to-top');
+  backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+});
+
+document.getElementById('back-to-top').addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 
