@@ -380,3 +380,9 @@ footer a {
   font-size: 14px;
   color: #007BFF;
 }
+.form-default-note {
+  font-size: 13px;
+  color: #444;
+  text-align: center;
+  margin-bottom: 10px;
+}
