@@ -229,24 +229,46 @@ document.addEventListener('DOMContentLoaded', () => {
         })
       });
       const data = await resp.json();
-      if (data.base_price) {
-        out.innerHTML = `
-        <div class="price-card">
-          <h3>✅ Résumé de votre demande</h3>
-          <p><strong>🪟 Type :</strong> ${typeLabelMap[config.type] || config.type}</p>
-          <p><strong>Dimensions :</strong> ${w} mm × ${h} mm</p>
-          <p><strong>Couleur :</strong> ${config.color}</p>
-          <p><strong>Vitrage :</strong> ${config.vitrage}</p>
-          <p><strong>OB :</strong> ${config.ob}</p>
-          <p class="highlight-price"><strong>Total estimé :</strong> ${data.base_price} € HT</p>
-          <div class="quick-feedback">
-            <p>💬 Ce prix vous paraît utile ?</p>
-            <button class="feedback-btn" onclick="openModal('oui')">👍 Oui</button>
-            <button class="feedback-btn" onclick="openModal('parler')">❓ Je préfère en parler</button>
-          </div>
-          <p class="price-note">💡 Montant indicatif basé sur vos choix. Livraison et pose non inclus.</p>
-        </div>`;
-      } else {
+      
+if (data.base_price) {
+  const base = data.base_price;
+  const min = Math.round(base * 0.45);
+  const max = Math.round(base * 0.65);
+  out.innerHTML = `
+    <div class="price-card">
+      <h3>✅ Résumé de votre demande</h3>
+      <p><strong>🪟 Type :</strong> ${typeLabelMap[config.type] || config.type}</p>
+      <p><strong>Dimensions :</strong> ${w} mm × ${h} mm</p>
+      <p><strong>Couleur :</strong> ${config.color}</p>
+      <p><strong>Vitrage :</strong> ${config.vitrage}</p>
+      <p><strong>OB :</strong> ${config.ob}</p>
+      <p class="highlight-price"><strong>Estimation :</strong> entre <strong>${min} €</strong> et <strong>${max} €</strong> HT</p>
+      <p class="price-note">
+        🧾 Prix indicatif pour la fourniture seule – hors pose.
+        <br>💡 Le tarif dépend de la configuration choisie et de la provenance du profilé (France, UE ou import).
+      </p>
+      <div class="quick-feedback">
+        <p>💬 Ce prix vous paraît utile ?</p>
+        <button class="feedback-btn" onclick="openModal('oui')">👍 Oui</button>
+        <button class="feedback-btn" onclick="openModal('parler')">❓ Je préfère en parler</button>
+      </div>
+      <div class="price-note" style="margin-top: 14px; background: #f9f9f9; padding: 10px; border-left: 4px solid #007BFF; border-radius: 6px;">
+        <strong>❓ Pourquoi un prix indicatif ?</strong><br>
+        Les fenêtres sur mesure varient beaucoup selon :
+        <ul style="margin-top: 6px; margin-bottom: 6px; padding-left: 18px;">
+          <li>le type de profilé (origine française, allemande ou import)</li>
+          <li>les options choisies (OB, vitrage renforcé…)</li>
+          <li>la quantité ou le mode de livraison (en palette ou à l’unité)</li>
+        </ul>
+        👉 Le prix affiché donne une <strong>fourchette réaliste</strong>, sans engagement.<br><br>
+        📩 Si vous avez déjà reçu un devis, comparez-le à cette fourchette. S’il est très différent, 
+        envoyez-nous le <strong>nom de la marque</strong> et le <strong>prix obtenu</strong>, 
+        ainsi que votre email : nous vous dirons s’il est cohérent.
+      </div>
+    </div>`;
+}
+      
+      else {
         out.textContent = "Aucune correspondance pour cette taille.";
       }
     } catch (err) {
