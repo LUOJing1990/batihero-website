@@ -522,8 +522,8 @@ footer a {
 }
 #back-to-top {
   position: fixed;
-  bottom: 24px;
-  right: 16px;
+  bottom: 30px;
+  right: 30px;
   z-index: 999;
   display: none;
   background-color: #007BFF;
@@ -533,12 +533,12 @@ footer a {
   border-radius: 50%;
   font-size: 18px;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
-
 #back-to-top:hover {
   background-color: #0056b3;
 }
+
 @media screen and (min-width: 601px) {
   .left-info {
     position: absolute;
@@ -552,19 +552,4 @@ footer a {
     border: none;
     box-shadow: none;
   }
-}
-#back-to-top {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 999;
-  display: none;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 12px 16px;
-  border-radius: 50%;
-  font-size: 18px;
-  cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
