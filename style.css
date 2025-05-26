@@ -332,7 +332,38 @@ footer a {
 
 /* ======== 移动端适配 ======== */
 @media screen and (max-width: 600px) {
+  .collapsible-info {
+    width: 100%;
+    margin-top: 24px;
+  }
 
+  .collapsible-toggle {
+    width: 100%;
+    background-color: #007BFF;
+    color: white;
+    padding: 12px 16px;
+    font-size: 14px;
+    text-align: left;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .collapsible-toggle::after {
+    content: '';
+    float: right;
+  }
+
+  .collapsible-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .collapsible-content.active {
+    max-height: 1000px;
+    margin-top: 10px;
+  }
   /* 页面结构压缩 */
   .center-container {
     padding: 25px 12px;
