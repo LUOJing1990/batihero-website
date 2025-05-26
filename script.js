@@ -29,7 +29,7 @@ const sizeLimits = {
   SOUFFLET_PVC:                 { width: [600, 1500], height: [450, 950] }
 };
 
-// 图像路径绑定表
+// 图片路径和文字
 function updateFenetreImage(type) {
   const imgEl = document.getElementById('preview-img');
   const captionEl = document.getElementById('preview-caption');
@@ -74,7 +74,6 @@ function updateFenetreImage(type) {
     SOUFFLET_PVC: "Soufflet — Petit ouvrant haut pour WC ou buanderie."
   };
 
-  // 切换图像
   if (imageMap[type]) {
     imgEl.src = imageMap[type];
     imgEl.style.display = 'block';
@@ -82,13 +81,12 @@ function updateFenetreImage(type) {
     imgEl.style.display = 'none';
   }
 
-  // 切换文字描述
   if (captionEl) {
     captionEl.textContent = captionMap[type] || '';
   }
 }
 
-
+// OB按钮状态
 function toggleOBDisabled(disabled) {
   const btn = document.querySelector('.option-btn[data-step="ob"][data-value="oui"]');
   if (!btn) return;
@@ -96,6 +94,7 @@ function toggleOBDisabled(disabled) {
   btn.classList.toggle('disabled', disabled);
 }
 
+// 尺寸提示
 function updateSizeHint() {
   const type = config.type;
   const hintW = document.getElementById('hint-width');
@@ -110,6 +109,7 @@ function updateSizeHint() {
   hintH.textContent = `👉 Hauteur recommandée : ${range.height[0]} mm — ${range.height[1]} mm`;
 }
 
+// OB按钮可用性
 function updateOBButtonState() {
   const type = config.type;
   const w = config.width;
@@ -123,6 +123,7 @@ function updateOBButtonState() {
   toggleOBDisabled(leafWidth > 800 || h > 2000);
 }
 
+// 激活按钮
 function setActiveBtnGroup(step, value) {
   document.querySelectorAll(`.option-btn[data-step="${step}"]`).forEach(btn => {
     btn.classList.remove('active');
@@ -136,8 +137,10 @@ function setActiveBtnGroup(step, value) {
   if (['type', 'width', 'height'].includes(step)) updateOBButtonState();
 }
 
+// 主逻辑
 document.addEventListener('DOMContentLoaded', () => {
   setActiveBtnGroup('type', 'FIXED_WINDOW_PRICING');
+
   document.querySelectorAll('.option-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const step = btn.dataset.step;
@@ -145,6 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
       setActiveBtnGroup(step, value);
     });
   });
+
   ['gh-width', 'gh-height'].forEach(id => {
     document.getElementById(id).addEventListener('input', () => {
       config.width = Number(document.getElementById('gh-width').value);
@@ -153,6 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // 获取报价
   const btn = document.getElementById('gh-devisBtn');
   const out = document.getElementById('gh-result');
   btn.addEventListener('click', async () => {
@@ -199,26 +204,22 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       const data = await resp.json();
       if (data.base_price) {
-      out.innerHTML = `
-      <div class="price-card">
-      <h3>✅ Résumé de votre demande</h3>
-      <p><strong>Type :</strong> ${config.type}</p>
-      <p><strong>Dimensions :</strong> ${w} mm × ${h} mm</p>
-      <p><strong>Couleur :</strong> ${config.color}</p>
-      <p><strong>Vitrage :</strong> ${config.vitrage}</p>
-      <p><strong>OB :</strong> ${config.ob}</p>
-      <p class="highlight-price"><strong>Total estimé :</strong> ${data.base_price} € HT</p>
-
-      <div class="quick-feedback">
-      <p>💬 Ce prix vous paraît utile ?</p>
-      <button class="feedback-btn" onclick="openModal('oui')">👍 Oui</button>
-      <button class="feedback-btn" onclick="openModal('parler')">❓ Je préfère en parler</button>
-      </div>
-
-
-      <p class="price-note">💡 Montant indicatif basé sur vos choix. Livraison et pose non inclus.</p>
-      </div>`;
-
+        out.innerHTML = `
+        <div class="price-card">
+        <h3>✅ Résumé de votre demande</h3>
+        <p><strong>Type :</strong> ${config.type}</p>
+        <p><strong>Dimensions :</strong> ${w} mm × ${h} mm</p>
+        <p><strong>Couleur :</strong> ${config.color}</p>
+        <p><strong>Vitrage :</strong> ${config.vitrage}</p>
+        <p><strong>OB :</strong> ${config.ob}</p>
+        <p class="highlight-price"><strong>Total estimé :</strong> ${data.base_price} € HT</p>
+        <div class="quick-feedback">
+        <p>💬 Ce prix vous paraît utile ?</p>
+        <button class="feedback-btn" onclick="openModal('oui')">👍 Oui</button>
+        <button class="feedback-btn" onclick="openModal('parler')">❓ Je préfère en parler</button>
+        </div>
+        <p class="price-note">💡 Montant indicatif basé sur vos choix. Livraison et pose non inclus.</p>
+        </div>`;
       } else {
         out.textContent = "Aucune correspondance pour cette taille.";
       }
@@ -229,41 +230,48 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.classList.remove("loading");
     }
   });
-    // ✅ ✅ ✅ 折叠说明功能逻辑开始
+
+  // 折叠说明
   const toggleBtn = document.querySelector('.collapsible-toggle');
   const content = document.querySelector('.collapsible-content');
-
   if (toggleBtn && content) {
     toggleBtn.addEventListener('click', () => {
       content.classList.toggle('active');
-      toggleBtn.innerHTML = content.classList.contains('active') 
+      toggleBtn.innerHTML = content.classList.contains('active')
         ? '💡 Qu’est-ce qui influence le prix ? ⬆️'
         : '💡 Qu’est-ce qui influence le prix ? ⬇️';
     });
   }
+
+  // 返回顶部按钮逻辑 ✅✅✅
+  const backToTop = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+  });
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 });
+
+// 弹窗反馈逻辑
 function openModal(feedbackType) {
   document.getElementById('feedback-modal').style.display = 'flex';
-  window.currentFeedbackType = feedbackType; // 'oui' 或 'parler'
+  window.currentFeedbackType = feedbackType;
 }
-
 function closeModal() {
   document.getElementById('feedback-modal').style.display = 'none';
 }
-
 async function submitFeedback() {
   const text = document.getElementById('feedback-text').value.trim();
   if (!text) {
     alert("Merci de remplir le message 🙏");
     return;
   }
-
   const payload = {
     feedback_type: window.currentFeedbackType,
     message: text,
     timestamp: new Date().toISOString()
   };
-
   try {
     await fetch("https://80a67dd4-043a-437b-9b31-fec40991fe12-00-4rtgpz7r016u.worf.replit.dev/api/feedback", {
       method: 'POST',
@@ -277,12 +285,3 @@ async function submitFeedback() {
     alert("Erreur lors de l’envoi du message.");
   }
 }
-window.addEventListener('scroll', () => {
-  const backToTop = document.getElementById('back-to-top');
-  backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
-});
-
-document.getElementById('back-to-top').addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
