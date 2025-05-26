@@ -300,11 +300,14 @@ if (data.base_price) {
 });
 
 function openModal(feedbackType) {
-  document.getElementById('feedback-modal').style.display = 'flex';
+  const modal = document.getElementById('feedback-modal');
+  modal.classList.add('active');
   window.currentFeedbackType = feedbackType;
 }
+
 function closeModal() {
-  document.getElementById('feedback-modal').style.display = 'none';
+  const modal = document.getElementById('feedback-modal');
+  modal.classList.remove('active');
 }
 async function submitFeedback() {
   const text = document.getElementById('feedback-text').value.trim();
