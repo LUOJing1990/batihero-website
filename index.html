@@ -189,6 +189,16 @@
 <script src="script.js" defer></script>
 <button id="back-to-top" title="Retour haut">⬆️</button>
 <div style="height: 2000px;"></div>
+
+  <div id="feedback-modal" style="display: none;" class="modal-overlay">
+  <div class="modal-content">
+    <h3>Votre retour</h3>
+    <textarea id="feedback-text" placeholder="Laissez-nous un message..." style="width:100%; height:100px; margin-bottom:10px;"></textarea>
+    <button onclick="submitFeedback()">Envoyer</button>
+    <button onclick="closeModal()">Annuler</button>
+  </div>
+  </div>
+  
 </body>
 </html>
 
