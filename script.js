@@ -229,6 +229,18 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.classList.remove("loading");
     }
   });
+    // ✅ ✅ ✅ 折叠说明功能逻辑开始
+  const toggleBtn = document.querySelector('.collapsible-toggle');
+  const content = document.querySelector('.collapsible-content');
+
+  if (toggleBtn && content) {
+    toggleBtn.addEventListener('click', () => {
+      content.classList.toggle('active');
+      toggleBtn.innerHTML = content.classList.contains('active') 
+        ? '💡 Qu’est-ce qui influence le prix ? ⬆️'
+        : '💡 Qu’est-ce qui influence le prix ? ⬇️';
+    });
+  }
 });
 function openModal(feedbackType) {
   document.getElementById('feedback-modal').style.display = 'flex';
