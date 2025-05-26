@@ -373,3 +373,10 @@ footer a {
   text-align: center;
   width: 100%;
 }
+.tooltip-icon {
+  display: inline-block;
+  margin-left: 6px;
+  cursor: help;
+  font-size: 14px;
+  color: #007BFF;
+}
