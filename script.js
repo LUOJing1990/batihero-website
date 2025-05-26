@@ -155,6 +155,14 @@ function setActiveBtnGroup(step, value) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    // 🔥 显式设置 config 值
+  config.type = 'FIXED_WINDOW_PRICING';
+  config.color = 'blanc';
+  config.vitrage = '4-20-4';
+  config.ob = 'non';
+
+  // 设置按钮样式 + 图像提示等
   setActiveBtnGroup('type', 'FIXED_WINDOW_PRICING');
   setActiveBtnGroup('color', 'blanc');
   setActiveBtnGroup('vitrage', '4-20-4');
