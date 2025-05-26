@@ -156,6 +156,9 @@ function setActiveBtnGroup(step, value) {
 
 document.addEventListener('DOMContentLoaded', () => {
   setActiveBtnGroup('type', 'FIXED_WINDOW_PRICING');
+  setActiveBtnGroup('color', 'blanc');
+  setActiveBtnGroup('vitrage', '4-20-4');
+  setActiveBtnGroup('ob', 'non');
 
   document.querySelectorAll('.option-btn').forEach(btn => {
     btn.addEventListener('click', () => {
