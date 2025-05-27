@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
     out.textContent = "Chargement du devis...";
 
     try {
-      const resp = await fetch('https://80a67dd4-043a-437b-9b31-fec40991fe12-00-4rtgpz7r016u.worf.replit.dev/api/devis', {
+      const resp = await fetch('https://batihero-backend.onrender.com/api/devis', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -321,7 +321,7 @@ async function submitFeedback() {
     timestamp: new Date().toISOString()
   };
   try {
-    await fetch("https://80a67dd4-043a-437b-9b31-fec40991fe12-00-4rtgpz7r016u.worf.replit.dev/api/feedback", {
+    await fetch("https://batihero-backend.onrender.com/api/feedback", {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
