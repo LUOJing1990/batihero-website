@@ -511,9 +511,9 @@ nav a {
 }
 
 /* ✅ 任务 2：隐藏 tooltip 图标 */
-.tooltip-icon {
-  display: none;
-}
+  .tooltip-icon {
+    display: none !important;
+  }
 }
 
 /* ======== 锚点偏移 ======== */
