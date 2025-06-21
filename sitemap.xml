@@ -1,18 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://www.batihero.com/</loc>
-  </url>
-  <url>
-    <loc>https://www.batihero.com/about.html</loc>
-  </url>
-  <url>
-    <loc>https://www.batihero.com/faq.html</loc>
-  </url>
-  <url>
-    <loc>https://www.batihero.com/mentions_legales.html</loc>
-  </url>
-  <url>
-    <loc>https://www.batihero.com/cgv.html</loc>
-  </url>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://www.batihero.com/</loc>
+  <lastmod>2025-06-21T12:10:33+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://www.batihero.com/index.html</loc>
+  <lastmod>2025-06-21T12:10:33+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.batihero.com/about.html</loc>
+  <lastmod>2025-06-21T12:10:33+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.batihero.com/faq.html</loc>
+  <lastmod>2025-06-21T12:10:33+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.batihero.com/articles/index.html</loc>
+  <lastmod>2025-06-21T12:10:33+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.batihero.com/mentions_legales.html</loc>
+  <lastmod>2025-06-21T12:10:33+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.batihero.com/cgv.html</loc>
+  <lastmod>2025-06-21T12:10:33+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.batihero.com/articles/le-vrai-prix-des-fenetres.html</loc>
+  <lastmod>2025-06-21T12:10:33+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.batihero.com/articles/pose-renovation-vs-depose-totale.html</loc>
+  <lastmod>2025-06-21T12:10:33+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.batihero.com/articles/options-cachees-devis.html</loc>
+  <lastmod>2025-06-21T12:10:33+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.batihero.com/articles/pvc-vs-aluminium.html</loc>
+  <lastmod>2025-06-21T12:10:33+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.batihero.com/articles/devis-sans-pose.html</loc>
+  <lastmod>2025-06-21T12:10:33+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.batihero.com/articles/double-vitrage-differences.html</loc>
+  <lastmod>2025-06-21T12:10:33+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.batihero.com/articles/delais-remplacement-fenetres.html</loc>
+  <lastmod>2025-06-21T12:10:33+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.batihero.com/articles/artisans-evitent-depose-totale.html</loc>
+  <lastmod>2025-06-21T12:10:33+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.batihero.com/articles/fenetres-copropriete-autorisation.html</loc>
+  <lastmod>2025-06-21T12:10:33+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.batihero.com/articles/pvc-noir-bois-piege.html</loc>
+  <lastmod>2025-06-21T12:10:33+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
 </urlset>
